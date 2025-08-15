@@ -1,0 +1,7 @@
+{
+  "label": "Hero Banner",
+  "icon": "hero",
+  "categories": ["Spicy Spoon – Core"],
+  "global": false,
+  "is_available_for_new_content": true
+}

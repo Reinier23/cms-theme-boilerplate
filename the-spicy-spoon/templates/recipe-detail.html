@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "the-spicy-spoon/partials/head-meta.html" %}
+</head>
+<body>
+  {% include "the-spicy-spoon/partials/header.html" %}
+  {% include "the-spicy-spoon/partials/breadcrumbs.html" %}
+  
+  <main role="main">
+    <article class="container">
+      <header style="text-align: center; margin-bottom: 2rem;">
+        <h1>{{ content.name }}</h1>
+        {% if content.featured_image %}
+        <figure style="margin: 1rem 0;">
+          <img src="{{ content.featured_image }}" alt="{{ content.name }}" 
+               width="800" height="450" loading="lazy" 
+               data-fallback data-title="{{ content.name }}"
+               style="border-radius: var(--radius);" />
+        </figure>
+        {% endif %}
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; margin: 1rem 0;">
+          {% if content.spice_level %}
+            {% module "spice_meter" 
+               path="the-spicy-spoon/modules/spice_meter",
+               label="Spice Level",
+               heat_level=content.spice_level
+            %}
+          {% endif %}
+          
+          {% if content.prep_time or content.cook_time %}
+          <div class="muted">
+            {% if content.prep_time %}Prep: {{ content.prep_time }}min{% endif %}
+            {% if content.cook_time %} • Cook: {{ content.cook_time }}min{% endif %}
+          </div>
+          {% endif %}
+          
+          {% if content.cuisine %}
+          <span class="tag">{{ content.cuisine }}</span>
+          {% endif %}
+        </div>
+      </header>
+      
+      <div style="max-width: 800px; margin: 0 auto;">
+        {% if content.post_summary %}
+        <div style="font-size: 1.1rem; color: var(--color-muted); margin-bottom: 2rem;">
+          {{ content.post_summary }}
+        </div>
+        {% endif %}
+        
+        {% if content.ingredients %}
+          {% module "ingredient_spotlight" 
+             path="the-spicy-spoon/modules/ingredient_spotlight",
+             label="Ingredients",
+             ingredients=content.ingredients
+          %}
+        {% endif %}
+        
+        <div class="recipe-content">
+          {{ content.post_body }}
+        </div>
+        
+        {% if content.tips %}
+        <section style="margin-top: 2rem;">
+          <h3>Heat Tips</h3>
+          {% module "tip_card" 
+             path="the-spicy-spoon/modules/tip_card",
+             label="Recipe Tips",
+             tip_content=content.tips
+          %}
+        </section>
+        {% endif %}
+      </div>
+    </article>
+    
+    <section class="section">
+      <div class="container">
+        <h2>Related Spicy Recipes</h2>
+        {% module "recipe_grid" 
+           path="the-spicy-spoon/modules/recipe_grid",
+           label="Related Recipes",
+           filter_by_cuisine=content.cuisine
+        %}
+      </div>
+    </section>
+  </main>
+  
+  {% include "the-spicy-spoon/partials/footer.html" %}
+</body>
+</html>

@@ -1,0 +1,40 @@
+---
+label: Home
+isAvailableForNewContent: true
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "the-spicy-spoon/partials/head-meta.html" %}
+</head>
+<body>
+  {% include "the-spicy-spoon/partials/header.html" %}
+  
+  <main role="main">
+    {% module "hero_banner" path="the-spicy-spoon/modules/hero_banner", label="Hero Banner" %}
+    
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">Featured Recipes</h2>
+        {% module "recipe_grid" path="the-spicy-spoon/modules/recipe_grid", label="Featured Recipe Grid" %}
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">This Week's Heat</h2>
+        {% module "collection_strip" path="the-spicy-spoon/modules/collection_strip", label="Weekly Collection" %}
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="container">
+        <h2 class="section__title">Spice Knowledge</h2>
+        {% module "tip_card" path="the-spicy-spoon/modules/tip_card", label="Spice Tip Card" %}
+      </div>
+    </section>
+  </main>
+  
+  {% include "the-spicy-spoon/partials/footer.html" %}
+</body>
+</html>

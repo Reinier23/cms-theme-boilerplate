@@ -1,0 +1,8 @@
+[
+  {
+    "name": "ingredients_list",
+    "label": "Ingredients",
+    "type": "rich_text",
+    "default": "<ul><li>2 tbsp olive oil</li><li>1 onion, diced</li><li>2-3 jalapeño peppers, minced</li><li>Salt and pepper to taste</li></ul>"
+  }
+]

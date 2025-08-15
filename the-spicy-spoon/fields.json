@@ -1,0 +1,11 @@
+[
+  {
+    "name": "brand",
+    "label": "Brand",
+    "type": "group",
+    "children": [
+      { "name": "primary_color", "label": "Primary Color", "type": "color" },
+      { "name": "show_breadcrumbs", "label": "Show Breadcrumbs", "type": "boolean" }
+    ]
+  }
+]

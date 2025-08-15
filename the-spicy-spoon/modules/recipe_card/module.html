@@ -1,0 +1,56 @@
+<article class="card" data-recipe-card 
+         data-cuisine="{{ module.cuisine or '' }}" 
+         data-heat="{{ module.spice_level or 3 }}" 
+         data-method="{{ module.method or '' }}" 
+         data-time="{{ module.prep_time or 0 }}" 
+         data-diet="{{ module.diet or '' }}">
+  <div class="card__media">
+    {% if module.recipe_image.src %}
+      <img src="{{ module.recipe_image.src }}" 
+           alt="{{ module.recipe_title }}" 
+           width="800" height="450" 
+           loading="lazy"
+           data-fallback 
+           data-title="{{ module.recipe_title }}" />
+    {% endif %}
+  </div>
+  <div class="card__body">
+    <h3 class="card__title">
+      {% if module.recipe_url %}
+        <a href="{{ module.recipe_url }}">{{ module.recipe_title }}</a>
+      {% else %}
+        {{ module.recipe_title }}
+      {% endif %}
+    </h3>
+    
+    {% if module.description %}
+      <p class="card__description">{{ module.description|truncate(120) }}</p>
+    {% endif %}
+    
+    <div class="card__meta">
+      {% if module.spice_level %}
+        {% module "spice_meter" 
+           path="the-spicy-spoon/modules/spice_meter",
+           heat_level=module.spice_level,
+           show_label=false
+        %}
+      {% endif %}
+      
+      {% if module.prep_time %}
+        <span>{{ module.prep_time }}min</span>
+      {% endif %}
+    </div>
+    
+    <div class="card__tags">
+      {% if module.cuisine and module.cuisine != "other" %}
+        <span class="tag">{{ module.cuisine|title }}</span>
+      {% endif %}
+      {% if module.method and module.method != "other" %}
+        <span class="tag">{{ module.method|title }}</span>
+      {% endif %}
+      {% if module.diet %}
+        <span class="tag">{{ module.diet|title }}</span>
+      {% endif %}
+    </div>
+  </div>
+</article>

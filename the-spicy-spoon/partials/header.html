@@ -1,0 +1,25 @@
+<header class="site-header" role="banner">
+  <div class="site-header__inner container">
+    <a class="site-logo" href="/" aria-label="The Spicy Spoon home">
+      <img src="{{ get_asset_url('the-spicy-spoon/assets/logos/spicy-spoon-logo.svg') }}" alt="The Spicy Spoon" width="160" height="32" />
+    </a>
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav id="primary-nav" class="primary-nav" data-primary-nav role="navigation" aria-label="Primary">
+      <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: .5rem; grid-auto-flow: row;">
+        <li><a href="/" class="muted">Home</a></li>
+        <li><a href="/recipes-listing" class="muted">Recipes</a></li>
+        <li><a href="/collections" class="muted">Collections</a></li>
+        <li><a href="/search" class="muted">Search</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="category-chips" role="navigation" aria-label="Spicy categories">
+    <a class="category-chip" href="/recipes-listing?cuisine=thai">Thai</a>
+    <a class="category-chip" href="/recipes-listing?cuisine=mexican">Mexican</a>
+    <a class="category-chip" href="/recipes-listing?cuisine=indian">Indian</a>
+    <a class="category-chip" href="/recipes-listing?cuisine=korean">Korean</a>
+    <a class="category-chip" href="/recipes-listing?method=stir-fry">Stir‑fry</a>
+    <a class="category-chip" href="/recipes-listing?method=grill">Grill</a>
+    <a class="category-chip" href="/recipes-listing?heat=5">Extra Hot</a>
+  </div>
+</header>

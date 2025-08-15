@@ -1,0 +1,45 @@
+<div class="recipe-grid">
+  <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+    {% set sample_recipes = [
+      {
+        "title": "Thai Spicy Basil Stir-Fry",
+        "image": get_asset_url("the-spicy-spoon/assets/images/placeholder-1-800x450.svg"),
+        "spice": 4,
+        "time": 20,
+        "cuisine": "thai",
+        "description": "A fiery Thai classic with fresh basil and chilies"
+      },
+      {
+        "title": "Mexican Jalapeño Salsa",
+        "image": get_asset_url("the-spicy-spoon/assets/images/placeholder-1-800x450.svg"),
+        "spice": 3,
+        "time": 10,
+        "cuisine": "mexican",
+        "description": "Fresh and zesty salsa with a perfect kick"
+      },
+      {
+        "title": "Korean Kimchi Fried Rice",
+        "image": get_asset_url("the-spicy-spoon/assets/images/placeholder-1-800x450.svg"),
+        "spice": 3,
+        "time": 15,
+        "cuisine": "korean",
+        "description": "Fermented kimchi adds depth and heat to fried rice"
+      }
+    ] %}
+    
+    {% for recipe in sample_recipes[:module.max_items] %}
+      {% if not module.filter_by_cuisine or recipe.cuisine == module.filter_by_cuisine %}
+        {% module "recipe_card" 
+           path="the-spicy-spoon/modules/recipe_card",
+           recipe_title=recipe.title,
+           recipe_image={"src": recipe.image},
+           recipe_url="#",
+           spice_level=recipe.spice,
+           prep_time=recipe.time,
+           cuisine=recipe.cuisine,
+           description=recipe.description
+        %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>

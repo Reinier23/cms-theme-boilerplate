@@ -1,0 +1,18 @@
+/* Hero banner module styles - extends theme.css */
+.hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .hero__inner {
+    grid-template-columns: 1fr auto;
+    text-align: left;
+  }
+  .hero__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+  }
+}

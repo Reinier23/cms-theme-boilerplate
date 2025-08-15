@@ -1,0 +1,18 @@
+{% if module.form_id %}
+  <div id="hs-form-{{ module.form_id }}"></div>
+  <script>
+    hbspt.forms.create({
+      region: "na1",
+      portalId: "YOUR_PORTAL_ID",
+      formId: "{{ module.form_id }}"
+    });
+  </script>
+{% else %}
+  <form style="display: flex; gap: 0.5rem; max-width: 400px;">
+    <input type="email" 
+           placeholder="{{ module.placeholder_text }}" 
+           style="flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: var(--radius);"
+           required />
+    <button type="submit" class="btn">{{ module.button_text }}</button>
+  </form>
+{% endif %}

@@ -1,0 +1,7 @@
+/* Spice meter module styles */
+.spice-meter__label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-left: 0.5rem;
+}

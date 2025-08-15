@@ -1,0 +1,14 @@
+[
+  {
+    "name": "collection_title",
+    "label": "Collection Title",
+    "type": "text",
+    "default": "Spicy Collection"
+  },
+  {
+    "name": "collection_description",
+    "label": "Collection Description",
+    "type": "textarea",
+    "default": "A curated selection of spicy recipes"
+  }
+]

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "the-spicy-spoon/partials/head-meta.html" %}
+</head>
+<body data-filter-listing>
+  {% include "the-spicy-spoon/partials/header.html" %}
+  {% include "the-spicy-spoon/partials/breadcrumbs.html" %}
+  
+  <main role="main">
+    <div class="container">
+      <h1>Spicy Recipes</h1>
+      <p class="muted">Find your perfect level of heat</p>
+    </div>
+    
+    {% module "filter_bar" path="the-spicy-spoon/modules/filter_bar", label="Recipe Filter Bar" %}
+    
+    <section class="section">
+      <div class="container">
+        <div style="margin-bottom: 1rem;">
+          <span data-filter-count>{{ blog.posts|length }}</span> recipes found
+        </div>
+        
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          {% for post in blog.posts %}
+            {% module "recipe_card" 
+               path="the-spicy-spoon/modules/recipe_card",
+               label="Recipe Card",
+               recipe_title=post.name,
+               recipe_image=post.featured_image,
+               recipe_url=post.absolute_url,
+               spice_level=post.spice_level,
+               prep_time=post.prep_time,
+               cuisine=post.cuisine,
+               method=post.method,
+               diet=post.diet,
+               description=post.post_summary
+            %}
+          {% endfor %}
+        </div>
+        
+        <div data-no-results hidden style="text-align: center; padding: 2rem;">
+          <h3>No recipes match your filters</h3>
+          <p class="muted">Try adjusting your search criteria</p>
+          <button onclick="document.querySelector('[data-filter-form]').reset(); location.search = ''" class="btn">Reset Filters</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  {% include "the-spicy-spoon/partials/footer.html" %}
+</body>
+</html>

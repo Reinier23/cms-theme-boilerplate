@@ -1,0 +1,12 @@
+/* Filter bar module styles */
+.filter-bar select {
+  padding: 0.4rem;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  background: #fff;
+  font-size: 0.9rem;
+}
+
+.filter-bar select:focus {
+  border-color: var(--color-accent);
+}

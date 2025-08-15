@@ -1,0 +1,15 @@
+/* Recipe card module styles */
+.card__description {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  line-height: 1.4;
+}
+
+.card__title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card__title a:hover {
+  color: var(--color-primary);
+}

@@ -1,0 +1,78 @@
+<section class="filter-bar">
+  <div class="container">
+    <form data-filter-form method="get">
+      {% if module.show_cuisine_filter %}
+      <div class="form-control">
+        <label for="cuisine">Cuisine</label>
+        <select name="cuisine" id="cuisine">
+          <option value="">Any cuisine</option>
+          <option value="thai">Thai</option>
+          <option value="mexican">Mexican</option>
+          <option value="indian">Indian</option>
+          <option value="korean">Korean</option>
+          <option value="chinese">Chinese</option>
+          <option value="american">American</option>
+        </select>
+      </div>
+      {% endif %}
+      
+      {% if module.show_heat_filter %}
+      <div class="form-control">
+        <label for="heat">Heat Level</label>
+        <select name="heat" id="heat">
+          <option value="">Any heat</option>
+          <option value="1">Mild</option>
+          <option value="2">Medium</option>
+          <option value="3">Hot</option>
+          <option value="4">Very Hot</option>
+          <option value="5">Extreme</option>
+        </select>
+      </div>
+      {% endif %}
+      
+      {% if module.show_method_filter %}
+      <div class="form-control">
+        <label for="method">Method</label>
+        <select name="method" id="method">
+          <option value="">Any method</option>
+          <option value="stir-fry">Stir-fry</option>
+          <option value="grill">Grill</option>
+          <option value="bake">Bake</option>
+          <option value="simmer">Simmer</option>
+          <option value="raw">Raw/No-cook</option>
+        </select>
+      </div>
+      {% endif %}
+      
+      {% if module.show_time_filter %}
+      <div class="form-control">
+        <label for="time">Max Time</label>
+        <select name="time" id="time">
+          <option value="">Any time</option>
+          <option value="15">15 min</option>
+          <option value="30">30 min</option>
+          <option value="60">1 hour</option>
+          <option value="120">2 hours</option>
+        </select>
+      </div>
+      {% endif %}
+      
+      {% if module.show_diet_filter %}
+      <div class="form-control">
+        <label for="diet">Diet</label>
+        <select name="diet" id="diet">
+          <option value="">Any diet</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="vegan">Vegan</option>
+          <option value="gluten-free">Gluten-free</option>
+          <option value="dairy-free">Dairy-free</option>
+        </select>
+      </div>
+      {% endif %}
+      
+      <div class="form-control">
+        <button type="submit" class="btn">Filter</button>
+      </div>
+    </form>
+  </div>
+</section>

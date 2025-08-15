@@ -1,0 +1,52 @@
+<section class="collection-strip">
+  <h3>{{ module.collection_title }}</h3>
+  <p class="muted">{{ module.collection_description }}</p>
+  
+  <div class="carousel" data-carousel>
+    <div class="carousel__track" data-carousel-track>
+      {% set sample_recipes = [
+        {
+          "title": "Thai Chili Oil Noodles",
+          "image": get_asset_url("the-spicy-spoon/assets/images/placeholder-1-800x450.svg"),
+          "spice": 4,
+          "time": 25,
+          "cuisine": "thai"
+        },
+        {
+          "title": "Spicy Korean Gochujang Chicken",
+          "image": get_asset_url("the-spicy-spoon/assets/images/placeholder-1-800x450.svg"),
+          "spice": 4,
+          "time": 30,
+          "cuisine": "korean"
+        },
+        {
+          "title": "Mexican Chipotle Tacos",
+          "image": get_asset_url("the-spicy-spoon/assets/images/placeholder-1-800x450.svg"),
+          "spice": 3,
+          "time": 20,
+          "cuisine": "mexican"
+        }
+      ] %}
+      
+      {% for recipe in sample_recipes %}
+        <div class="carousel__slide" data-carousel-slide>
+          {% module "recipe_card" 
+             path="the-spicy-spoon/modules/recipe_card",
+             recipe_title=recipe.title,
+             recipe_image={"src": recipe.image},
+             recipe_url="#",
+             spice_level=recipe.spice,
+             prep_time=recipe.time,
+             cuisine=recipe.cuisine,
+             description="A delicious spicy recipe from our curated collection"
+          %}
+        </div>
+      {% endfor %}
+    </div>
+    
+    <div class="carousel__controls">
+      <button class="carousel__btn" data-carousel-prev aria-label="Previous">‹</button>
+      <button class="carousel__btn" data-carousel-next aria-label="Next">›</button>
+    </div>
+  </div>
+</section>
