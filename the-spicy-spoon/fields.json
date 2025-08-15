@@ -8,215 +8,85 @@
         "name": "primary_color",
         "label": "Primary Color",
         "type": "color",
-        "default": "#B71C1C",
-        "help_text": "Main brand color for buttons, links, and accents"
+        "default": "#B71C1C"
       },
       {
         "name": "accent_color", 
         "label": "Accent Color",
         "type": "color",
-        "default": "#FF6D00",
-        "help_text": "Secondary color for hover states and highlights"
+        "default": "#FF6D00"
       },
       {
         "name": "success_color",
         "label": "Success Color", 
         "type": "color",
-        "default": "#2E7D32",
-        "help_text": "Used for positive actions and ratings"
+        "default": "#2E7D32"
       },
       {
         "name": "warning_color",
         "label": "Warning Color",
         "type": "color", 
-        "default": "#F57C00",
-        "help_text": "Used for heat indicators and alerts"
+        "default": "#F57C00"
       },
       {
         "name": "neutral_900",
         "label": "Dark Text",
         "type": "color",
-        "default": "#212121",
-        "help_text": "Primary text color"
+        "default": "#212121"
       },
       {
         "name": "neutral_600", 
         "label": "Medium Text",
         "type": "color",
-        "default": "#757575",
-        "help_text": "Secondary text and meta information"
-      },
-      {
-        "name": "neutral_400",
-        "label": "Light Text",
-        "type": "color",
-        "default": "#9E9E9E",
-        "help_text": "Placeholder text and disabled states"
-      },
-      {
-        "name": "neutral_200",
-        "label": "Border Color",
-        "type": "color",
-        "default": "#E0E0E0",
-        "help_text": "Borders and dividers"
+        "default": "#757575"
       },
       {
         "name": "neutral_100",
         "label": "Light Background",
         "type": "color", 
-        "default": "#F5F5F5",
-        "help_text": "Section backgrounds and cards"
+        "default": "#F5F5F5"
       }
     ]
   },
   {
-    "name": "typography_scale",
-    "label": "Typography Scale",
-    "type": "group", 
-    "children": [
-      {
-        "name": "heading_font_stack",
-        "label": "Heading Font Family",
-        "type": "text",
-        "default": "'Playfair Display', Georgia, serif",
-        "help_text": "Font for headings and titles"
-      },
-      {
-        "name": "body_font_stack",
-        "label": "Body Font Family", 
-        "type": "text",
-        "default": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
-        "help_text": "Font for body text and UI elements"
-      },
-      {
-        "name": "base_font_size",
-        "label": "Base Font Size (px)",
-        "type": "number",
-        "default": 16,
-        "min": 14,
-        "max": 20,
-        "help_text": "Root font size for scaling"
-      },
-      {
-        "name": "type_scale_ratio",
-        "label": "Type Scale Ratio",
-        "type": "choice",
-        "choices": [
-          ["1.125", "Minor Second (1.125)"],
-          ["1.2", "Minor Third (1.2)"], 
-          ["1.25", "Major Third (1.25)"],
-          ["1.333", "Perfect Fourth (1.333)"],
-          ["1.414", "Augmented Fourth (1.414)"],
-          ["1.5", "Perfect Fifth (1.5)"]
-        ],
-        "default": "1.25",
-        "help_text": "Ratio for scaling heading sizes"
-      },
-      {
-        "name": "line_height_base",
-        "label": "Base Line Height",
-        "type": "number",
-        "default": 1.6,
-        "min": 1.2,
-        "max": 2,
-        "step": 0.1,
-        "help_text": "Base line height for readability"
-      },
-      {
-        "name": "letter_spacing",
-        "label": "Letter Spacing (em)",
-        "type": "number",
-        "default": 0,
-        "min": -0.05,
-        "max": 0.1,
-        "step": 0.005,
-        "help_text": "Adjust character spacing"
-      }
-    ]
-  },
-  {
-    "name": "spacing_scale",
-    "label": "Spacing Scale",
+    "name": "layout",
+    "label": "Layout & Spacing",
     "type": "group",
     "children": [
       {
-        "name": "base_spacing_unit",
-        "label": "Base Spacing Unit (rem)",
-        "type": "number",
-        "default": 1,
-        "min": 0.5,
-        "max": 2,
-        "step": 0.25,
-        "help_text": "Base unit for spacing calculations"
-      },
-      {
-        "name": "spacing_scale_factor",
-        "label": "Spacing Scale Factor", 
-        "type": "choice",
-        "choices": [
-          ["0.75", "Tight (0.75x)"],
-          ["1", "Normal (1x)"],
-          ["1.25", "Loose (1.25x)"],
-          ["1.5", "Extra Loose (1.5x)"]
-        ],
-        "default": "1",
-        "help_text": "Global spacing multiplier"
-      },
-      {
-        "name": "container_max_width",
+        "name": "container_width",
         "label": "Container Max Width (px)",
         "type": "number", 
         "default": 1200,
         "min": 960,
-        "max": 1600,
-        "help_text": "Maximum content container width"
+        "max": 1600
       },
       {
-        "name": "content_max_width",
-        "label": "Content Max Width (px)",
-        "type": "number",
-        "default": 720,
-        "min": 600, 
-        "max": 900,
-        "help_text": "Maximum width for reading content"
-      },
-      {
-        "name": "grid_gap",
-        "label": "Grid Gap (rem)",
-        "type": "number",
-        "default": 1.5,
-        "min": 0.5,
-        "max": 3,
-        "step": 0.25,
-        "help_text": "Gap between grid items"
-      }
-    ]
-  },
-  {
-    "name": "design_tokens",
-    "label": "Design Tokens",
-    "type": "group",
-    "children": [
-      {
-        "name": "border_radius_base",
+        "name": "border_radius",
         "label": "Border Radius (px)",
         "type": "number",
         "default": 8,
         "min": 0,
-        "max": 24,
-        "help_text": "Base border radius for cards and buttons"
+        "max": 24
+      }
+    ]
+  },
+  {
+    "name": "recipe_display",
+    "label": "Recipe Display",
+    "type": "group",
+    "children": [
+      {
+        "name": "show_ratings",
+        "label": "Show Star Ratings",
+        "type": "boolean",
+        "default": true
       },
       {
-        "name": "shadow_strength",
-        "label": "Shadow Strength",
-        "type": "choice",
-        "choices": [
-          ["subtle", "Subtle"],
-          ["medium", "Medium"],
-          ["strong", "Strong"]
-        ],
-        "default": "medium",
-        "help_text": "Intensity of drop shadows"
+        "name": "show_heat_level",
+        "label": "Show Heat Level",
+        "type": "boolean",
+        "default": true
       },
       {
         "name": "card_aspect_ratio",
@@ -225,203 +95,28 @@
         "choices": [
           ["1/1", "Square (1:1)"],
           ["4/3", "Landscape (4:3)"],
-          ["3/4", "Portrait (3:4)"],
-          ["16/9", "Wide (16:9)"]
+          ["3/4", "Portrait (3:4)"]
         ],
-        "default": "4/3",
-        "help_text": "Default aspect ratio for recipe images"
-      },
-      {
-        "name": "button_style",
-        "label": "Button Style",
-        "type": "choice",
-        "choices": [
-          ["rounded", "Rounded"],
-          ["pill", "Pill (fully rounded)"],
-          ["square", "Square"],
-          ["minimal", "Minimal"]
-        ],
-        "default": "rounded",
-        "help_text": "Primary button styling approach"
-      }
-    ]
-  },
-  {
-    "name": "recipe_display",
-    "label": "Recipe Display Options",
-    "type": "group",
-    "children": [
-      {
-        "name": "show_ratings",
-        "label": "Show Star Ratings",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Display ratings on recipe cards"
-      },
-      {
-        "name": "show_difficulty",
-        "label": "Show Difficulty Level", 
-        "type": "boolean",
-        "default": true,
-        "help_text": "Display difficulty indicators"
-      },
-      {
-        "name": "show_heat_level",
-        "label": "Show Heat Level",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Display spice heat indicators"
-      },
-      {
-        "name": "show_nutrition",
-        "label": "Show Nutrition Info",
-        "type": "boolean", 
-        "default": true,
-        "help_text": "Display nutrition facts"
-      },
-      {
-        "name": "show_print_button",
-        "label": "Show Print Button",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Show print button on recipe pages"
-      },
-      {
-        "name": "enable_step_timers",
-        "label": "Enable Step Timers",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Allow timers for cooking steps"
-      },
-      {
-        "name": "default_servings",
-        "label": "Default Servings",
-        "type": "number",
-        "default": 4,
-        "min": 1,
-        "max": 12,
-        "help_text": "Default number of servings"
-      }
-    ]
-  },
-  {
-    "name": "search_filters",
-    "label": "Search & Filters",
-    "type": "group",
-    "children": [
-      {
-        "name": "enable_search",
-        "label": "Enable Recipe Search",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Show search functionality"
-      },
-      {
-        "name": "enable_filters",
-        "label": "Enable Filter Sidebar", 
-        "type": "boolean",
-        "default": true,
-        "help_text": "Show filtering options on listing pages"
-      },
-      {
-        "name": "recipes_per_page",
-        "label": "Recipes Per Page",
-        "type": "number",
-        "default": 12,
-        "min": 6,
-        "max": 24,
-        "help_text": "Number of recipes to show per page"
-      },
-      {
-        "name": "enable_infinite_scroll",
-        "label": "Enable Infinite Scroll",
-        "type": "boolean",
-        "default": false,
-        "help_text": "Load more recipes on scroll"
-      },
-      {
-        "name": "show_result_count",
-        "label": "Show Result Count",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Display number of results found"
+        "default": "4/3"
       }
     ]
   },
   {
     "name": "performance",
-    "label": "Performance & Behavior",
+    "label": "Performance",
     "type": "group",
     "children": [
       {
         "name": "lazy_load_images",
         "label": "Lazy Load Images",
         "type": "boolean",
-        "default": true,
-        "help_text": "Load images as they come into view"
-      },
-      {
-        "name": "preload_hero_images",
-        "label": "Preload Hero Images",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Preload above-the-fold images"
+        "default": true
       },
       {
         "name": "enable_animations",
         "label": "Enable Animations",
         "type": "boolean",
-        "default": true,
-        "help_text": "Use subtle animations and transitions"
-      },
-      {
-        "name": "sticky_header",
-        "label": "Sticky Header",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Keep header visible when scrolling"
-      },
-      {
-        "name": "smooth_scroll",
-        "label": "Smooth Scroll",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Use smooth scrolling for anchor links"
-      }
-    ]
-  },
-  {
-    "name": "content_defaults",
-    "label": "Content Defaults",
-    "type": "group",
-    "children": [
-      {
-        "name": "site_tagline",
-        "label": "Site Tagline",
-        "type": "text",
-        "default": "Fiery Recipes & Culinary Heat",
-        "help_text": "Tagline displayed with the logo"
-      },
-      {
-        "name": "default_author",
-        "label": "Default Recipe Author",
-        "type": "text",
-        "default": "The Spicy Spoon",
-        "help_text": "Default author for recipes"
-      },
-      {
-        "name": "copyright_text",
-        "label": "Copyright Text",
-        "type": "text",
-        "default": "The Spicy Spoon. All rights reserved.",
-        "help_text": "Footer copyright text"
-      },
-      {
-        "name": "social_sharing",
-        "label": "Enable Social Sharing",
-        "type": "boolean",
-        "default": true,
-        "help_text": "Show social sharing buttons"
+        "default": true
       }
     ]
   }

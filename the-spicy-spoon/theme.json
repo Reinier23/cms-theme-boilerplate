@@ -1,5 +1,13 @@
 {
   "label": "The Spicy Spoon",
   "preview_path": "templates/home.html",
-  "use_theme_settings": true
+  "screenshot_path": "assets/images/placeholders/hero.jpg",
+  "use_theme_settings": true,
+  "css": [
+    "assets/css/theme.css"
+  ],
+  "js": [
+    "assets/js/theme.js",
+    "assets/js/filtering.js"
+  ]
 }
