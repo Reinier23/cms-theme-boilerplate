@@ -138,13 +138,13 @@
       {
         "name": "heading_font",
         "label": "Heading Font Stack",
-        "type": "text_field",
+        "type": "text",
         "default": "\"Impact\", \"Arial Narrow Bold\", system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif"
       },
       {
         "name": "body_font",
         "label": "Body Font Stack",
-        "type": "text_field",
+        "type": "text",
         "default": "system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif"
       },
       {
