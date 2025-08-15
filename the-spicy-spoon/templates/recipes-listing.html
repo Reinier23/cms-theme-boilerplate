@@ -1,406 +1,98 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Recipes Listing (Drag & Drop)
+  label: Recipes Listing - Spicy Recipes (Drag & Drop)
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     {% include "the-spicy-spoon/partials/head-meta.html" %}
     {{ standard_header_includes }}
-    <link href="{{ get_asset_url('the-spicy-spoon/assets/css/theme.css') }}" rel="stylesheet">
 </head>
-<body class="loading">
+<body>
     {% include "the-spicy-spoon/partials/site-header.html" %}
     
-    <!-- Main Content Area - Drag & Drop Enabled -->
-    {% dnd_area "recipe_listing_content" %}
+    <!-- Main Content Areas -->
+    <main>
         
-        <!-- Page Header Module -->
-        {% dnd_module "page_header" %}
-            {% module "hero_banner" 
-                path="the-spicy-spoon/modules/hero_banner"
-                title="Spicy Recipe Collection"
-                subtitle="Explore our complete collection of fiery recipes from around the world. Filter by heat level, cuisine, or cooking time to find your perfect dish."
-                search_placeholder="Search recipes, ingredients, or cuisines..."
-                show_stats=false
-                compact_mode=true
-                background_color="#F5F5F5"
-                search_suggestions="Thai,Mexican,Hot Sauce,Jalapeño,Quick Meals"
-            %}
-        {% end_dnd_module %}
+        <!-- Page Header -->
+        {% dnd_area "page_header"
+           label="Page Header"
+           class="header-area" %}
+            {% dnd_module 
+               path="the-spicy-spoon/modules/hero_banner"
+               offset=0 %}
+            {% end_dnd_module %}
+        {% end_dnd_area %}
         
-        <!-- Filter and Results Section -->
-        {% dnd_module "filter_results_section" %}
-            <section class="recipes-listing-section">
-                <div class="container">
-                    <div class="listing-layout">
-                        <!-- Filter Sidebar -->
-                        <aside class="filter-sidebar" data-filter-sidebar>
-                            {% module "filter_bar" 
-                                path="the-spicy-spoon/modules/filter_bar"
-                                title="Filter Recipes"
-                                enable_category_filter=true
-                                enable_cuisine_filter=true
-                                enable_heat_filter=true
-                                enable_time_filter=true
-                                enable_difficulty_filter=true
-                                enable_dietary_filter=true
-                                categories="Appetizers,Main Dishes,Sauces,Marinades,Desserts"
-                                cuisines="Thai,Mexican,Indian,Korean,Chinese,Cajun,Italian"
-                                heat_levels="Mild,Medium,Hot,Very Hot,Volcanic"
-                                time_ranges="Under 15 min,15-30 min,30-60 min,Over 1 hour"
-                                difficulty_levels="Beginner,Intermediate,Advanced"
-                                dietary_options="Vegetarian,Vegan,Gluten-Free,Dairy-Free"
-                            %}
-                        </aside>
-                        
-                        <!-- Results Area -->
-                        <main class="results-area">
-                            <!-- Results Header -->
-                            <div class="results-header">
-                                <div class="results-meta">
-                                    <h1 class="results-title">All Spicy Recipes</h1>
-                                    <p class="results-count">Showing <span id="result-count">24</span> delicious recipes</p>
-                                </div>
-                                
-                                <!-- Sort Controls -->
-                                <div class="sort-controls">
-                                    <label for="sort-select" class="sort-label">Sort by:</label>
-                                    <select id="sort-select" class="sort-select">
-                                        <option value="relevance">Relevance</option>
-                                        <option value="rating">Highest Rated</option>
-                                        <option value="time-asc">Quickest First</option>
-                                        <option value="time-desc">Longest First</option>
-                                        <option value="heat-asc">Mildest First</option>
-                                        <option value="heat-desc">Hottest First</option>
-                                        <option value="newest">Newest</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <!-- Active Filters Display -->
-                            <div class="active-filters" id="active-filters" style="display: none;">
-                                <div class="active-filters-content">
-                                    <span class="active-filters-label">Active filters:</span>
-                                    <div class="active-filter-chips"></div>
-                                    <button type="button" class="clear-all-filters">Clear all</button>
-                                </div>
-                            </div>
-                            
-                            <!-- Recipe Grid -->
-                            {% module "recipe_grid" 
-                                path="the-spicy-spoon/modules/recipe_grid"
-                                show_section_header=false
-                                grid_columns=3
-                                show_load_more=true
-                                recipes_per_page=12
-                                recipes=[
-                                    {
-                                        "title": "Thai Spicy Basil Stir-Fry",
-                                        "description": "A fiery Thai classic with fresh basil, chilies, and aromatic spices.",
-                                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-1.svg'),
-                                        "rating": 4.8,
-                                        "review_count": 142,
-                                        "cook_time": "20 min",
-                                        "cuisine": "Thai",
-                                        "heat_level": 4,
-                                        "heat_text": "Very Hot",
-                                        "difficulty": "Intermediate",
-                                        "url": "/recipes/thai-spicy-basil-stir-fry",
-                                        "badge": "Popular"
-                                    },
-                                    {
-                                        "title": "Mexican Jalapeño Salsa",
-                                        "description": "Fresh and zesty salsa with the perfect kick of jalapeño heat.",
-                                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-2.svg'),
-                                        "rating": 4.6,
-                                        "review_count": 89,
-                                        "cook_time": "10 min",
-                                        "cuisine": "Mexican",
-                                        "heat_level": 3,
-                                        "heat_text": "Hot",
-                                        "difficulty": "Beginner",
-                                        "url": "/recipes/mexican-jalapeno-salsa"
-                                    },
-                                    {
-                                        "title": "Korean Kimchi Fried Rice",
-                                        "description": "Fermented kimchi adds incredible depth and heat to this satisfying fried rice.",
-                                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-3.svg'),
-                                        "rating": 4.9,
-                                        "review_count": 67,
-                                        "cook_time": "15 min",
-                                        "cuisine": "Korean",
-                                        "heat_level": 3,
-                                        "heat_text": "Hot",
-                                        "difficulty": "Intermediate",
-                                        "url": "/recipes/korean-kimchi-fried-rice",
-                                        "badge": "New"
-                                    },
-                                    {
-                                        "title": "Indian Vindaloo Curry",
-                                        "description": "A fiery Goan curry with tender meat in a spicy, tangy sauce.",
-                                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-1.svg'),
-                                        "rating": 4.7,
-                                        "review_count": 95,
-                                        "cook_time": "45 min",
-                                        "cuisine": "Indian",
-                                        "heat_level": 5,
-                                        "heat_text": "Volcanic",
-                                        "difficulty": "Advanced",
-                                        "url": "/recipes/indian-vindaloo-curry"
-                                    },
-                                    {
-                                        "title": "Cajun Blackened Catfish",
-                                        "description": "Perfectly spiced catfish with a crispy, fiery blackened crust.",
-                                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-2.svg'),
-                                        "rating": 4.5,
-                                        "review_count": 73,
-                                        "cook_time": "25 min",
-                                        "cuisine": "Cajun",
-                                        "heat_level": 3,
-                                        "heat_text": "Hot",
-                                        "difficulty": "Intermediate",
-                                        "url": "/recipes/cajun-blackened-catfish"
-                                    },
-                                    {
-                                        "title": "Szechuan Mapo Tofu",
-                                        "description": "Silky tofu in a numbing, spicy sauce with Szechuan peppercorns.",
-                                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-3.svg'),
-                                        "rating": 4.4,
-                                        "review_count": 112,
-                                        "cook_time": "30 min",
-                                        "cuisine": "Chinese",
-                                        "heat_level": 4,
-                                        "heat_text": "Very Hot",
-                                        "difficulty": "Intermediate",
-                                        "url": "/recipes/szechuan-mapo-tofu"
-                                    }
-                                ]
-                            %}
-                        </main>
-                    </div>
-                </div>
-            </section>
-        {% end_dnd_module %}
+        <!-- Filter Sidebar -->
+        {% dnd_area "filter_section"
+           label="Filter & Search"
+           class="filter-area" %}
+            {% dnd_module 
+               path="the-spicy-spoon/modules/filter_bar"
+               offset=0 %}
+            {% end_dnd_module %}
+        {% end_dnd_area %}
         
-        <!-- Related Content Section -->
-        {% dnd_module "related_collections" %}
-            {% module "collection_strip" 
-                path="the-spicy-spoon/modules/collection_strip"
-                section_title="🔥 Explore Recipe Collections"
-                section_subtitle="Discover curated collections for every heat preference"
-                show_view_all_button=true
-                view_all_url="/collections"
-                background_color="#FFFFFF"
-                collections=[
-                    {
-                        "title": "Beginner-Friendly Heat",
-                        "description": "Perfect starting point for spice newcomers",
-                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-2.svg'),
-                        "recipe_count": "28 recipes",
-                        "heat_level": "🌶️ Mild",
-                        "url": "/collections/beginner-heat"
-                    },
-                    {
-                        "title": "Quick Fire Meals",
-                        "description": "Spicy dishes ready in 30 minutes or less",
-                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-1.svg'),
-                        "recipe_count": "35 recipes",
-                        "heat_level": "🌶️🌶️ Medium",
-                        "url": "/collections/quick-fire"
-                    },
-                    {
-                        "title": "Heat Challenge",
-                        "description": "For those who dare to push their limits",
-                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-3.svg'),
-                        "recipe_count": "15 recipes",
-                        "heat_level": "🌶️🌶️🌶️🌶️🌶️ Volcanic",
-                        "url": "/collections/heat-challenge"
-                    }
-                ]
-            %}
-        {% end_dnd_module %}
+        <!-- Recipe Results -->
+        {% dnd_area "recipe_results"
+           label="Recipe Results"
+           class="results-area" %}
+            {% dnd_module 
+               path="the-spicy-spoon/modules/recipe_grid"
+               offset=0 %}
+            {% end_dnd_module %}
+        {% end_dnd_area %}
         
-    {% end_dnd_area %}
+        <!-- Featured Collections -->
+        {% dnd_area "related_collections"
+           label="Related Collections"
+           class="content-area" %}
+            {% dnd_module 
+               path="the-spicy-spoon/modules/collection_strip"
+               offset=0 %}
+            {% end_dnd_module %}
+        {% end_dnd_area %}
+        
+        <!-- Additional Content -->
+        {% dnd_area "additional_content"
+           label="Additional Content"
+           class="content-area" %}
+        {% end_dnd_area %}
+        
+    </main>
     
     {% include "the-spicy-spoon/partials/site-footer.html" %}
     
-    <!-- Load JavaScript -->
-    {{ standard_footer_includes }}
-    <script src="{{ get_asset_url('the-spicy-spoon/assets/js/filtering.js') }}"></script>
-    <script>
-        // Initialize page functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            document.body.classList.remove('loading');
-            document.body.classList.add('loaded');
-            
-            // Initialize filtering if available
-            if (window.RecipeFiltering) {
-                window.RecipeFiltering.init();
-            }
-        });
-    </script>
-    
     <style>
-    /* Recipes Listing Specific Styles */
-    .recipes-listing-section {
-        padding: var(--space-2xl) 0;
+    /* Template-specific styles */
+    .header-area {
+        margin-bottom: 2rem;
     }
     
-    .listing-layout {
-        display: grid;
-        grid-template-columns: 280px 1fr;
-        gap: var(--space-2xl);
-        align-items: start;
+    .filter-area {
+        margin-bottom: 2rem;
+        padding: 1rem 0;
+        background: var(--color-neutral-50, #FAFAFA);
     }
     
     .results-area {
-        min-height: 600px;
+        margin-bottom: 3rem;
     }
     
-    .results-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: var(--space-xl);
-        padding-bottom: var(--space-md);
-        border-bottom: 1px solid var(--color-neutral-200);
+    .content-area {
+        margin-bottom: 2rem;
     }
     
-    .results-title {
-        font-size: var(--font-size-2xl);
-        margin-bottom: var(--space-sm);
-        color: var(--color-neutral-900);
-    }
-    
-    .results-count {
-        color: var(--color-neutral-600);
-        margin: 0;
-    }
-    
-    .sort-controls {
-        display: flex;
-        align-items: center;
-        gap: var(--space-sm);
-    }
-    
-    .sort-label {
-        font-size: var(--font-size-sm);
-        font-weight: 500;
-        color: var(--color-neutral-600);
-    }
-    
-    .sort-select {
-        padding: var(--space-sm) var(--space-md);
-        border: 1px solid var(--color-neutral-200);
-        border-radius: var(--border-radius);
-        background: var(--color-white);
-        font-size: var(--font-size-sm);
-        min-width: 150px;
-    }
-    
-    .sort-select:focus {
-        outline: none;
-        border-color: var(--color-primary);
-        box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.1);
-    }
-    
-    .active-filters {
-        margin-bottom: var(--space-lg);
-        padding: var(--space-md);
-        background: var(--color-neutral-100);
-        border-radius: var(--border-radius);
-    }
-    
-    .active-filters-content {
-        display: flex;
-        align-items: center;
-        gap: var(--space-md);
-        flex-wrap: wrap;
-    }
-    
-    .active-filters-label {
-        font-size: var(--font-size-sm);
-        font-weight: 600;
-        color: var(--color-neutral-900);
-    }
-    
-    .active-filter-chips {
-        display: flex;
-        gap: var(--space-sm);
-        flex-wrap: wrap;
-    }
-    
-    .clear-all-filters {
-        background: none;
-        border: none;
-        color: var(--color-primary);
-        font-size: var(--font-size-sm);
-        font-weight: 500;
-        cursor: pointer;
-        text-decoration: underline;
-        padding: 0;
-    }
-    
-    .clear-all-filters:hover {
-        color: var(--color-accent);
-    }
-    
-    /* Mobile Responsive */
-    @media (max-width: 1024px) {
-        .listing-layout {
-            grid-template-columns: 1fr;
-            gap: var(--space-lg);
-        }
-        
-        .filter-sidebar {
-            order: 2;
-            position: sticky;
-            top: var(--space-lg);
-        }
-        
-        .results-area {
-            order: 1;
-        }
-    }
-    
+    /* Responsive layout */
     @media (max-width: 768px) {
-        .results-header {
-            flex-direction: column;
-            align-items: stretch;
-            gap: var(--space-md);
+        .filter-area {
+            padding: 0.5rem 0;
         }
-        
-        .sort-controls {
-            justify-content: flex-end;
-        }
-        
-        .filter-sidebar {
-            position: static;
-            order: 1;
-        }
-        
-        .results-area {
-            order: 2;
-        }
-        
-        .active-filters-content {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: var(--space-sm);
-        }
-    }
-    
-    /* Loading states */
-    .loading .results-area {
-        opacity: 0.7;
-    }
-    
-    .loaded .results-area {
-        opacity: 1;
-        transition: opacity var(--transition-normal);
     }
     </style>
+    
+    {{ standard_footer_includes }}
 </body>
 </html>
