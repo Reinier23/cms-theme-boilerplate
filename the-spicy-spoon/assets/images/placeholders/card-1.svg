@@ -1,0 +1,23 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFEDE7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFF3E0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#cardGrad1)"/>
+  <g transform="translate(200,150)">
+    <!-- Chili pepper -->
+    <path d="M-30,-40 Q-45,-25 -35,-5 Q-25,15 -10,20 Q5,22 15,18 Q25,12 30,-5 Q35,-25 25,-40 Q15,-45 0,-43 Q-15,-45 -30,-40 Z" fill="#B71C1C" opacity="0.8"/>
+    <!-- Steam lines -->
+    <path d="M-10,-50 Q-8,-65 -10,-75" stroke="#FF6D00" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M0,-50 Q2,-65 0,-75" stroke="#FF6D00" stroke-width="2" fill="none" opacity="0.6"/>
+    <path d="M10,-50 Q12,-65 10,-75" stroke="#FF6D00" stroke-width="2" fill="none" opacity="0.6"/>
+  </g>
+  <text x="200" y="200" text-anchor="middle" font-family="serif" font-size="18" font-weight="bold" fill="#B71C1C" opacity="0.7">Spicy Recipe</text>
+  <text x="200" y="225" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#757575" opacity="0.6">400 × 300 Recipe Card</text>
+  <!-- Heat indicator -->
+  <g transform="translate(30,30)">
+    <text font-size="16" fill="#FF6D00">🌶️🌶️🌶️</text>
+  </g>
+</svg>

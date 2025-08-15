@@ -1,48 +1,120 @@
-{% set _title = page_meta.html_title or content.meta.html_title or "The Spicy Spoon" %}
-{% set _desc = page_meta.meta_description or content.meta.meta_description or "Spicy recipes, tips, and fiery flavors from The Spicy Spoon." %}
-{% set _img = content.featured_image or get_asset_url("the-spicy-spoon/assets/images/placeholder-1-1600x900.svg") %}
-{% set _type = content and content.content_type == "BLOG_POST" and "article" or "website" %}
-
+<!-- SEO Meta Tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ _title }}</title>
-<meta name="description" content="{{ _desc|escape }}">
-<link rel="canonical" href="{{ content.canonical_url or request.full_url }}">
+<meta name="theme-color" content="{{ theme_settings.brand.primary_color.color or '#B71C1C' }}">
 
-<meta property="og:title" content="{{ _title }}">
-<meta property="og:description" content="{{ _desc|escape }}">
-<meta property="og:type" content="{{ _type }}">
+<!-- Title and Description -->
+<title>{{ content.html_title or page_meta.html_title or "The Spicy Spoon - Fiery Recipes & Culinary Adventures" }}</title>
+<meta name="description" content="{{ content.meta_description or page_meta.meta_description or 'Discover fiery flavors and spicy recipes that will ignite your taste buds. From mild to volcanic heat levels, find your perfect spicy dish.' }}">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="{{ content.html_title or page_meta.html_title or 'The Spicy Spoon - Fiery Recipes' }}">
+<meta property="og:description" content="{{ content.meta_description or page_meta.meta_description or 'Discover fiery flavors and spicy recipes that will ignite your taste buds.' }}">
+<meta property="og:type" content="{% if content.content_type_category == 'blog-post' %}article{% else %}website{% endif %}">
 <meta property="og:url" content="{{ request.full_url }}">
-<meta property="og:image" content="{{ _img }}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ _title }}">
-<meta name="twitter:description" content="{{ _desc|escape }}">
-<meta name="twitter:image" content="{{ _img }}">
+<meta property="og:site_name" content="The Spicy Spoon">
+{% if content.featured_image %}
+<meta property="og:image" content="{{ content.featured_image }}">
+{% else %}
+<meta property="og:image" content="{{ get_asset_url('/assets/images/placeholders/hero.svg') }}">
+{% endif %}
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="600">
 
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ content.html_title or page_meta.html_title or 'The Spicy Spoon - Fiery Recipes' }}">
+<meta name="twitter:description" content="{{ content.meta_description or page_meta.meta_description or 'Discover fiery flavors and spicy recipes that will ignite your taste buds.' }}">
+{% if content.featured_image %}
+<meta name="twitter:image" content="{{ content.featured_image }}">
+{% else %}
+<meta name="twitter:image" content="{{ get_asset_url('/assets/images/placeholders/hero.svg') }}">
+{% endif %}
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ request.full_url }}">
+
+<!-- Font Preloads -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Theme CSS Variables from Settings -->
 <style>
-:root{
-  --color-primary: {{ theme.brand.color_primary.color|default('#B71C1C') }};
-  --color-accent: {{ theme.brand.color_accent.color|default('#FF6D00') }};
-  --color-dark: {{ theme.brand.color_dark.color|default('#111111') }};
-  --color-muted: {{ theme.brand.color_muted.color|default('#6B6B6B') }};
-  --heat-100: {{ theme.spice_scale.heat_100.color|default('#FFEDE7') }};
-  --heat-200: {{ theme.spice_scale.heat_200.color|default('#FFD4C7') }};
-  --heat-300: {{ theme.spice_scale.heat_300.color|default('#FFB6A0') }};
-  --heat-400: {{ theme.spice_scale.heat_400.color|default('#FF8C6B') }};
-  --heat-500: {{ theme.spice_scale.heat_500.color|default('#FF6D4A') }};
-  --heat-600: {{ theme.spice_scale.heat_600.color|default('#F4511E') }};
-  --heat-700: {{ theme.spice_scale.heat_700.color|default('#E64A19') }};
-  --heat-800: {{ theme.spice_scale.heat_800.color|default('#D84315') }};
-  --heat-900: {{ theme.spice_scale.heat_900.color|default('#BF360C') }};
-  --container-max: {{ theme.layout.container_max_width or 1200 }}px;
-  --grid-gap: {{ theme.layout.grid_gap or 16 }}px;
-  --radius: {{ theme.layout.card_radius or 10 }}px;
-  --shadow-strength: {{ theme.layout.shadow_strength or 0.15 }};
-  --font-heading: {{ theme.typography.heading_font|tojson|safe }};
-  --font-body: {{ theme.typography.body_font|tojson|safe }};
-  --font-size-base: {{ theme.typography.base_font_size or 16 }}px;
+:root {
+  /* Brand Colors from Theme Settings */
+  --color-primary: {{ theme_settings.brand.primary_color.color or '#B71C1C' }};
+  --color-accent: {{ theme_settings.brand.accent_color.color or '#FF6D00' }};
+  --color-success: {{ theme_settings.brand.success_color.color or '#2E7D32' }};
+  --color-warning: {{ theme_settings.brand.warning_color.color or '#F57C00' }};
+  --color-neutral-900: {{ theme_settings.brand.neutral_900.color or '#212121' }};
+  --color-neutral-600: {{ theme_settings.brand.neutral_600.color or '#757575' }};
+  --color-neutral-100: {{ theme_settings.brand.neutral_100.color or '#F5F5F5' }};
+  
+  /* Typography from Theme Settings */
+  --font-heading: {{ theme_settings.typography.heading_font or "'Playfair Display', Georgia, serif" }};
+  --font-body: {{ theme_settings.typography.body_font or "'Inter', system-ui, sans-serif" }};
+  --font-size-base: {{ theme_settings.typography.base_font_size or 16 }}px;
+  --font-scale: {{ theme_settings.typography.heading_scale or 1.25 }};
+  
+  /* Layout from Theme Settings */
+  --container-width: {{ theme_settings.layout.container_width or 1200 }}px;
+  --content-width: {{ theme_settings.layout.content_width or 720 }}px;
+  --spacing-scale: {{ theme_settings.layout.spacing_scale or 1 }};
+  --border-radius: {{ theme_settings.layout.border_radius or 8 }}px;
+  
+  /* Recipe Display from Theme Settings */
+  --card-aspect-ratio: {{ theme_settings.recipe_display.card_aspect_ratio or '4/3' }};
+}
+
+/* Performance optimizations */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+.loading {
+  visibility: hidden;
+}
+
+.loaded {
+  visibility: visible;
 }
 </style>
 
-{{ standard_header_includes }}
-{% include "the-spicy-spoon/partials/seo-schema.html" %}
+<!-- Structured Data for Recipe Site -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "The Spicy Spoon",
+  "description": "Fiery recipes and culinary adventures for spicy food lovers",
+  "url": "{{ request.domain }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ request.domain }}/recipes?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "The Spicy Spoon",
+    "url": "{{ request.domain }}"
+  }
+}
+</script>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="{{ get_asset_url('/assets/icons/pepper.svg') }}">
+<link rel="apple-touch-icon" href="{{ get_asset_url('/assets/icons/pepper.svg') }}">
+
+<!-- Performance hints -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+
+<!-- Critical CSS inlined above; non-critical CSS will be loaded via theme.json -->

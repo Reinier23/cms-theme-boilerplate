@@ -1,11 +1,202 @@
 [
   {
     "name": "brand",
-    "label": "Brand",
+    "label": "Brand & Colors",
     "type": "group",
     "children": [
-      { "name": "primary_color", "label": "Primary Color", "type": "color" },
-      { "name": "show_breadcrumbs", "label": "Show Breadcrumbs", "type": "boolean" }
+      {
+        "name": "primary_color",
+        "label": "Primary Color",
+        "type": "color",
+        "default": "#B71C1C"
+      },
+      {
+        "name": "accent_color", 
+        "label": "Accent Color",
+        "type": "color",
+        "default": "#FF6D00"
+      },
+      {
+        "name": "success_color",
+        "label": "Success Color", 
+        "type": "color",
+        "default": "#2E7D32"
+      },
+      {
+        "name": "warning_color",
+        "label": "Warning Color",
+        "type": "color", 
+        "default": "#F57C00"
+      },
+      {
+        "name": "neutral_900",
+        "label": "Dark Text",
+        "type": "color",
+        "default": "#212121"
+      },
+      {
+        "name": "neutral_600", 
+        "label": "Medium Text",
+        "type": "color",
+        "default": "#757575"
+      },
+      {
+        "name": "neutral_100",
+        "label": "Light Background",
+        "type": "color", 
+        "default": "#F5F5F5"
+      }
+    ]
+  },
+  {
+    "name": "typography",
+    "label": "Typography",
+    "type": "group", 
+    "children": [
+      {
+        "name": "heading_font",
+        "label": "Heading Font Family",
+        "type": "text_field",
+        "default": "'Playfair Display', Georgia, serif"
+      },
+      {
+        "name": "body_font",
+        "label": "Body Font Family", 
+        "type": "text_field",
+        "default": "'Inter', system-ui, sans-serif"
+      },
+      {
+        "name": "heading_scale",
+        "label": "Heading Size Scale",
+        "type": "choice",
+        "choices": [
+          ["1.125", "Small (1.125)"],
+          ["1.2", "Medium (1.2)"], 
+          ["1.25", "Large (1.25)"],
+          ["1.333", "Extra Large (1.333)"]
+        ],
+        "default": "1.25"
+      },
+      {
+        "name": "base_font_size",
+        "label": "Base Font Size (px)",
+        "type": "number",
+        "default": 16,
+        "min": 14,
+        "max": 20
+      }
+    ]
+  },
+  {
+    "name": "layout",
+    "label": "Layout & Spacing",
+    "type": "group",
+    "children": [
+      {
+        "name": "container_width",
+        "label": "Max Container Width (px)",
+        "type": "number", 
+        "default": 1200,
+        "min": 960,
+        "max": 1400
+      },
+      {
+        "name": "content_width",
+        "label": "Content Width (px)",
+        "type": "number",
+        "default": 720,
+        "min": 600, 
+        "max": 800
+      },
+      {
+        "name": "spacing_scale",
+        "label": "Spacing Scale", 
+        "type": "choice",
+        "choices": [
+          ["0.75", "Tight"],
+          ["1", "Normal"],
+          ["1.25", "Loose"],
+          ["1.5", "Extra Loose"]
+        ],
+        "default": "1"
+      },
+      {
+        "name": "border_radius",
+        "label": "Border Radius (px)",
+        "type": "number",
+        "default": 8,
+        "min": 0,
+        "max": 20
+      }
+    ]
+  },
+  {
+    "name": "recipe_display",
+    "label": "Recipe Display Options",
+    "type": "group",
+    "children": [
+      {
+        "name": "card_aspect_ratio",
+        "label": "Recipe Card Image Ratio",
+        "type": "choice", 
+        "choices": [
+          ["4/3", "Landscape (4:3)"],
+          ["1/1", "Square (1:1)"],
+          ["3/4", "Portrait (3:4)"]
+        ],
+        "default": "4/3"
+      },
+      {
+        "name": "show_ratings",
+        "label": "Show Star Ratings",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "name": "show_difficulty",
+        "label": "Show Difficulty Level", 
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "name": "show_nutrition",
+        "label": "Show Nutrition Info",
+        "type": "boolean", 
+        "default": true
+      },
+      {
+        "name": "enable_print_view",
+        "label": "Enable Print Stylesheet",
+        "type": "boolean",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "search_filters",
+    "label": "Search & Filters",
+    "type": "group",
+    "children": [
+      {
+        "name": "enable_search",
+        "label": "Enable Recipe Search",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "name": "enable_filters",
+        "label": "Enable Filter Sidebar", 
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "name": "results_per_page",
+        "label": "Results Per Page",
+        "type": "number",
+        "default": 12,
+        "min": 6,
+        "max": 24
+      }
     ]
   }
 ]
