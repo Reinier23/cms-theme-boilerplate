@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B71C1C"/>
+      <stop offset="100%" style="stop-color:#FF6D00"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Spoon Handle -->
+  <rect x="15" y="35" width="40" height="6" rx="3" fill="url(#logoGradient)"/>
+  
+  <!-- Spoon Bowl -->
+  <ellipse cx="65" cy="38" rx="12" ry="8" fill="url(#logoGradient)"/>
+  
+  <!-- Spice particles -->
+  <circle cx="62" cy="35" r="1.5" fill="#FF6D00"/>
+  <circle cx="67" cy="37" r="1" fill="#B71C1C"/>
+  <circle cx="65" cy="40" r="0.8" fill="#2E7D32"/>
+  
+  <!-- Pepper accent -->
+  <g transform="translate(85, 30)">
+    <path d="M0,8 Q-2,0 2,0 Q8,2 10,8 Q8,16 4,16 Q0,14 0,8 Z" fill="#FF4444"/>
+    <circle cx="5" cy="3" r="1.5" fill="#228B22"/>
+    <!-- Heat lines -->
+    <path d="M12,6 Q15,4 16,6 Q15,8 12,6" stroke="#FF6D00" stroke-width="1" fill="none"/>
+    <path d="M13,10 Q16,8 17,10 Q16,12 13,10" stroke="#FF6D00" stroke-width="1" fill="none"/>
+  </g>
+  
+  <!-- Text -->
+  <text x="110" y="35" font-family="serif" font-size="18" font-weight="bold" fill="#B71C1C">
+    The Spicy
+  </text>
+  <text x="110" y="52" font-family="serif" font-size="18" font-weight="bold" fill="#FF6D00">
+    Spoon
+  </text>
+  
+  <!-- Tagline -->
+  <text x="110" y="65" font-family="sans-serif" font-size="9" fill="#757575" letter-spacing="1px">
+    FIERY RECIPES
+  </text>
+</svg>

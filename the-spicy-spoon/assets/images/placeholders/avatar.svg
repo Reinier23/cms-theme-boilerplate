@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <defs>
+    <linearGradient id="avatarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F5F5"/>
+      <stop offset="100%" style="stop-color:#E0E0E0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="60" fill="url(#avatarGradient)"/>
+  
+  <!-- Chef hat -->
+  <ellipse cx="60" cy="35" rx="25" ry="20" fill="white"/>
+  <rect x="35" y="35" width="50" height="8" fill="white"/>
+  
+  <!-- Face -->
+  <circle cx="60" cy="55" r="18" fill="#FFDBCB"/>
+  
+  <!-- Eyes -->
+  <circle cx="54" cy="50" r="2" fill="#333"/>
+  <circle cx="66" cy="50" r="2" fill="#333"/>
+  
+  <!-- Nose -->
+  <ellipse cx="60" cy="57" rx="1.5" ry="2" fill="#FFB4A0"/>
+  
+  <!-- Smile -->
+  <path d="M54,62 Q60,67 66,62" stroke="#333" stroke-width="1.5" fill="none"/>
+  
+  <!-- Chef coat -->
+  <rect x="45" y="70" width="30" height="25" fill="white" rx="2"/>
+  
+  <!-- Buttons -->
+  <circle cx="60" cy="75" r="1.5" fill="#E0E0E0"/>
+  <circle cx="60" cy="82" r="1.5" fill="#E0E0E0"/>
+  <circle cx="60" cy="89" r="1.5" fill="#E0E0E0"/>
+  
+  <!-- Chef initials -->
+  <text x="60" y="110" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#757575">
+    CHEF
+  </text>
+</svg>

@@ -1,7 +1,7 @@
 <!-- SEO Meta Tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="{{ theme_settings.brand.primary_color.color or '#B71C1C' }}">
+<meta name="theme-color" content="{{ theme_settings.brand_palette.primary_color.color or '#B71C1C' }}">
 
 <!-- Title and Description -->
 <title>{{ content.html_title or page_meta.html_title or "The Spicy Spoon - Fiery Recipes & Culinary Adventures" }}</title>
@@ -16,10 +16,10 @@
 {% if content.featured_image %}
 <meta property="og:image" content="{{ content.featured_image }}">
 {% else %}
-<meta property="og:image" content="{{ get_asset_url('/assets/images/placeholders/hero.svg') }}">
+<meta property="og:image" content="{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/hero.jpg') }}">
 {% endif %}
 <meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="600">
+<meta property="og:image:height" content="630">
 
 <!-- Twitter Card Meta Tags -->
 <meta name="twitter:card" content="summary_large_image">
@@ -28,63 +28,207 @@
 {% if content.featured_image %}
 <meta name="twitter:image" content="{{ content.featured_image }}">
 {% else %}
-<meta name="twitter:image" content="{{ get_asset_url('/assets/images/placeholders/hero.svg') }}">
+<meta name="twitter:image" content="{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/hero.jpg') }}">
 {% endif %}
 
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ request.full_url }}">
 
-<!-- Font Preloads -->
+<!-- Preconnect for Performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Loading Strategy -->
+{% set heading_fonts = theme_settings.typography_scale.heading_font_stack or "'Playfair Display', Georgia, serif" %}
+{% set body_fonts = theme_settings.typography_scale.body_font_stack or "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" %}
+
+{% if "Playfair Display" in heading_fonts %}
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+{% endif %}
+{% if "Inter" in body_fonts %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+{% endif %}
 
 <!-- Theme CSS Variables from Settings -->
 <style>
 :root {
-  /* Brand Colors from Theme Settings */
-  --color-primary: {{ theme_settings.brand.primary_color.color or '#B71C1C' }};
-  --color-accent: {{ theme_settings.brand.accent_color.color or '#FF6D00' }};
-  --color-success: {{ theme_settings.brand.success_color.color or '#2E7D32' }};
-  --color-warning: {{ theme_settings.brand.warning_color.color or '#F57C00' }};
-  --color-neutral-900: {{ theme_settings.brand.neutral_900.color or '#212121' }};
-  --color-neutral-600: {{ theme_settings.brand.neutral_600.color or '#757575' }};
-  --color-neutral-100: {{ theme_settings.brand.neutral_100.color or '#F5F5F5' }};
+  /* ===== BRAND PALETTE ===== */
+  --color-primary: {{ theme_settings.brand_palette.primary_color.color or '#B71C1C' }};
+  --color-accent: {{ theme_settings.brand_palette.accent_color.color or '#FF6D00' }};
+  --color-success: {{ theme_settings.brand_palette.success_color.color or '#2E7D32' }};
+  --color-warning: {{ theme_settings.brand_palette.warning_color.color or '#F57C00' }};
+  --color-neutral-900: {{ theme_settings.brand_palette.neutral_900.color or '#212121' }};
+  --color-neutral-600: {{ theme_settings.brand_palette.neutral_600.color or '#757575' }};
+  --color-neutral-400: {{ theme_settings.brand_palette.neutral_400.color or '#9E9E9E' }};
+  --color-neutral-200: {{ theme_settings.brand_palette.neutral_200.color or '#E0E0E0' }};
+  --color-neutral-100: {{ theme_settings.brand_palette.neutral_100.color or '#F5F5F5' }};
+  --color-white: #FFFFFF;
   
-  /* Typography from Theme Settings */
-  --font-heading: {{ theme_settings.typography.heading_font or "'Playfair Display', Georgia, serif" }};
-  --font-body: {{ theme_settings.typography.body_font or "'Inter', system-ui, sans-serif" }};
-  --font-size-base: {{ theme_settings.typography.base_font_size or 16 }}px;
-  --font-scale: {{ theme_settings.typography.heading_scale or 1.25 }};
+  /* ===== TYPOGRAPHY SCALE ===== */
+  --font-heading: {{ heading_fonts }};
+  --font-body: {{ body_fonts }};
+  --font-size-base: {{ theme_settings.typography_scale.base_font_size or 16 }}px;
+  --type-scale: {{ theme_settings.typography_scale.type_scale_ratio or 1.25 }};
+  --line-height-base: {{ theme_settings.typography_scale.line_height_base or 1.6 }};
+  --letter-spacing: {{ theme_settings.typography_scale.letter_spacing or 0 }}em;
   
-  /* Layout from Theme Settings */
-  --container-width: {{ theme_settings.layout.container_width or 1200 }}px;
-  --content-width: {{ theme_settings.layout.content_width or 720 }}px;
-  --spacing-scale: {{ theme_settings.layout.spacing_scale or 1 }};
-  --border-radius: {{ theme_settings.layout.border_radius or 8 }}px;
+  /* Computed font sizes using scale */
+  --font-size-xs: calc(var(--font-size-base) * 0.75);
+  --font-size-sm: calc(var(--font-size-base) * 0.875);
+  --font-size-md: var(--font-size-base);
+  --font-size-lg: calc(var(--font-size-base) * 1.125);
+  --font-size-xl: calc(var(--font-size-base) * var(--type-scale));
+  --font-size-2xl: calc(var(--font-size-xl) * var(--type-scale));
+  --font-size-3xl: calc(var(--font-size-2xl) * var(--type-scale));
+  --font-size-4xl: calc(var(--font-size-3xl) * var(--type-scale));
+  --font-size-5xl: calc(var(--font-size-4xl) * var(--type-scale));
   
-  /* Recipe Display from Theme Settings */
-  --card-aspect-ratio: {{ theme_settings.recipe_display.card_aspect_ratio or '4/3' }};
+  /* ===== SPACING SCALE ===== */
+  --spacing-unit: {{ theme_settings.spacing_scale.base_spacing_unit or 1 }}rem;
+  --spacing-factor: {{ theme_settings.spacing_scale.spacing_scale_factor or 1 }};
+  
+  /* Computed spacing values */
+  --space-xs: calc(var(--spacing-unit) * 0.25 * var(--spacing-factor));
+  --space-sm: calc(var(--spacing-unit) * 0.5 * var(--spacing-factor));
+  --space-md: calc(var(--spacing-unit) * 1 * var(--spacing-factor));
+  --space-lg: calc(var(--spacing-unit) * 1.5 * var(--spacing-factor));
+  --space-xl: calc(var(--spacing-unit) * 2 * var(--spacing-factor));
+  --space-2xl: calc(var(--spacing-unit) * 3 * var(--spacing-factor));
+  --space-3xl: calc(var(--spacing-unit) * 4 * var(--spacing-factor));
+  --space-4xl: calc(var(--spacing-unit) * 6 * var(--spacing-factor));
+  
+  /* ===== LAYOUT DIMENSIONS ===== */
+  --container-max-width: {{ theme_settings.spacing_scale.container_max_width or 1200 }}px;
+  --content-max-width: {{ theme_settings.spacing_scale.content_max_width or 720 }}px;
+  --grid-gap: {{ theme_settings.spacing_scale.grid_gap or 1.5 }}rem;
+  
+  /* ===== DESIGN TOKENS ===== */
+  --border-radius: {{ theme_settings.design_tokens.border_radius_base or 8 }}px;
+  --border-radius-sm: calc(var(--border-radius) * 0.5);
+  --border-radius-lg: calc(var(--border-radius) * 1.5);
+  --border-radius-xl: calc(var(--border-radius) * 2);
+  
+  /* Shadow system based on strength setting */
+  {% set shadow_strength = theme_settings.design_tokens.shadow_strength or 'medium' %}
+  {% if shadow_strength == 'subtle' %}
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.1);
+  {% elif shadow_strength == 'strong' %}
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.16);
+  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.2);
+  {% else %}
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  {% endif %}
+  
+  /* ===== CARD & BUTTON STYLING ===== */
+  --card-aspect-ratio: {{ theme_settings.design_tokens.card_aspect_ratio or '4/3' }};
+  
+  {% set button_style = theme_settings.design_tokens.button_style or 'rounded' %}
+  {% if button_style == 'pill' %}
+  --button-radius: 999px;
+  {% elif button_style == 'square' %}
+  --button-radius: 0;
+  {% elif button_style == 'minimal' %}
+  --button-radius: var(--border-radius-sm);
+  {% else %}
+  --button-radius: var(--border-radius);
+  {% endif %}
+  
+  /* ===== TRANSITIONS ===== */
+  {% if theme_settings.performance.enable_animations %}
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  {% else %}
+  --transition-fast: 0ms;
+  --transition-normal: 0ms;
+  --transition-slow: 0ms;
+  {% endif %}
+  
+  /* ===== RESPONSIVE BREAKPOINTS ===== */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
 }
 
-/* Performance optimizations */
+/* ===== BASE STYLES ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  font-family: var(--font-body);
+  {% if theme_settings.performance.smooth_scroll %}
   scroll-behavior: smooth;
+  {% endif %}
 }
 
+body {
+  margin: 0;
+  color: var(--color-neutral-900);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  {% if theme_settings.typography_scale.letter_spacing != 0 %}
+  letter-spacing: var(--letter-spacing);
+  {% endif %}
+}
+
+/* ===== REDUCED MOTION SUPPORT ===== */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-/* Prevent FOUC (Flash of Unstyled Content) */
+/* ===== LOADING OPTIMIZATION ===== */
+{% if theme_settings.performance.preload_hero_images %}
+/* Preload critical images */
+.hero-image,
+.featured-image {
+  will-change: transform;
+}
+{% endif %}
+
+/* FOUC prevention */
 .loading {
   visibility: hidden;
 }
 
 .loaded {
   visibility: visible;
+}
+
+/* ===== PRINT OPTIMIZATIONS ===== */
+@media print {
+  :root {
+    --color-primary: #000000 !important;
+    --color-accent: #666666 !important;
+    --shadow-sm: none !important;
+    --shadow-md: none !important;
+    --shadow-lg: none !important;
+    --shadow-xl: none !important;
+  }
 }
 </style>
 
@@ -94,7 +238,7 @@ html {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "The Spicy Spoon",
-  "description": "Fiery recipes and culinary adventures for spicy food lovers",
+  "description": "{{ theme_settings.content_defaults.site_tagline or 'Fiery Recipes & Culinary Heat' }}",
   "url": "{{ request.domain }}",
   "potentialAction": {
     "@type": "SearchAction",
@@ -103,18 +247,60 @@ html {
   },
   "author": {
     "@type": "Organization",
-    "name": "The Spicy Spoon",
+    "name": "{{ theme_settings.content_defaults.default_author or 'The Spicy Spoon' }}",
     "url": "{{ request.domain }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ theme_settings.content_defaults.default_author or 'The Spicy Spoon' }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/logo.svg') }}"
+    }
   }
 }
 </script>
 
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="{{ get_asset_url('/assets/icons/pepper.svg') }}">
-<link rel="apple-touch-icon" href="{{ get_asset_url('/assets/icons/pepper.svg') }}">
+<!-- Favicon and App Icons -->
+<link rel="icon" type="image/svg+xml" href="{{ get_asset_url('the-spicy-spoon/assets/icons/pepper.svg') }}">
+<link rel="apple-touch-icon" href="{{ get_asset_url('the-spicy-spoon/assets/icons/pepper.svg') }}">
+<meta name="msapplication-TileColor" content="{{ theme_settings.brand_palette.primary_color.color or '#B71C1C' }}">
 
-<!-- Performance hints -->
+<!-- Performance Hints -->
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
-<!-- Critical CSS inlined above; non-critical CSS will be loaded via theme.json -->
+{% if theme_settings.performance.preload_hero_images %}
+<!-- Preload critical resources -->
+<link rel="preload" href="{{ get_asset_url('the-spicy-spoon/assets/css/theme.css') }}" as="style">
+{% endif %}
+
+<!-- Theme Detection for System Preferences -->
+<script>
+  // Theme detection and FOUC prevention
+  (function() {
+    // Remove loading class when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.classList.remove('loading');
+        document.body.classList.add('loaded');
+      });
+    } else {
+      document.body.classList.remove('loading');
+      document.body.classList.add('loaded');
+    }
+    
+    // Accessibility: announce dynamic content changes
+    if (!window.announceToScreenReader) {
+      window.announceToScreenReader = function(message) {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.setAttribute('class', 'sr-only');
+        announcement.textContent = message;
+        document.body.appendChild(announcement);
+        setTimeout(() => document.body.removeChild(announcement), 1000);
+      };
+    }
+  })();
+</script>
