@@ -1,0 +1,134 @@
+[
+  {
+    "name": "brand",
+    "label": "Brand",
+    "expanded": true,
+    "children": [
+      {
+        "name": "color_primary",
+        "label": "Primary (Deep Chili Red)",
+        "type": "color",
+        "default": {"color": "#B71C1C", "opacity": 100}
+      },
+      {
+        "name": "color_accent",
+        "label": "Accent (Bright Pepper Orange)",
+        "type": "color",
+        "default": {"color": "#FF6D00", "opacity": 100}
+      },
+      {
+        "name": "color_dark",
+        "label": "Dark (Near‑black)",
+        "type": "color",
+        "default": {"color": "#111111", "opacity": 100}
+      },
+      {
+        "name": "color_muted",
+        "label": "Muted (Warm Gray)",
+        "type": "color",
+        "default": {"color": "#6B6B6B", "opacity": 100}
+      }
+    ]
+  },
+  {
+    "name": "spice_scale",
+    "label": "Spice Heat Scale",
+    "children": [
+      {"name": "heat_100", "label": "Heat 100", "type": "color", "default": {"color": "#FFEDE7", "opacity": 100}},
+      {"name": "heat_200", "label": "Heat 200", "type": "color", "default": {"color": "#FFD4C7", "opacity": 100}},
+      {"name": "heat_300", "label": "Heat 300", "type": "color", "default": {"color": "#FFB6A0", "opacity": 100}},
+      {"name": "heat_400", "label": "Heat 400", "type": "color", "default": {"color": "#FF8C6B", "opacity": 100}},
+      {"name": "heat_500", "label": "Heat 500", "type": "color", "default": {"color": "#FF6D4A", "opacity": 100}},
+      {"name": "heat_600", "label": "Heat 600", "type": "color", "default": {"color": "#F4511E", "opacity": 100}},
+      {"name": "heat_700", "label": "Heat 700", "type": "color", "default": {"color": "#E64A19", "opacity": 100}},
+      {"name": "heat_800", "label": "Heat 800", "type": "color", "default": {"color": "#D84315", "opacity": 100}},
+      {"name": "heat_900", "label": "Heat 900", "type": "color", "default": {"color": "#BF360C", "opacity": 100}}
+    ]
+  },
+  {
+    "name": "typography",
+    "label": "Typography",
+    "children": [
+      {
+        "name": "heading_font",
+        "label": "Heading Font Stack",
+        "type": "text",
+        "default": "\"Impact\", \"Arial Narrow Bold\", system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif"
+      },
+      {
+        "name": "body_font",
+        "label": "Body Font Stack",
+        "type": "text",
+        "default": "system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Liberation Sans\", sans-serif"
+      },
+      {
+        "name": "base_font_size",
+        "label": "Base Font Size (px)",
+        "type": "number",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "layout",
+    "label": "Layout",
+    "children": [
+      {
+        "name": "container_max_width",
+        "label": "Container Max Width (px)",
+        "type": "number",
+        "default": 1200
+      },
+      {
+        "name": "grid_gap",
+        "label": "Grid Gap (px)",
+        "type": "number",
+        "default": 16
+      },
+      {
+        "name": "card_radius",
+        "label": "Card Corner Radius (px)",
+        "type": "number",
+        "default": 10
+      },
+      {
+        "name": "shadow_strength",
+        "label": "Shadow Strength (0–1)",
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "default": 0.15
+      }
+    ]
+  },
+  {
+    "name": "accessibility",
+    "label": "Accessibility & Motion",
+    "children": [
+      {
+        "name": "enable_high_contrast_focus",
+        "label": "High Contrast Focus Rings",
+        "type": "boolean",
+        "default": true
+      },
+      {
+        "name": "reduced_motion_default",
+        "label": "Prefer Reduced Motion by Default",
+        "type": "boolean",
+        "default": false
+      },
+      {
+        "name": "pepper_icon_style",
+        "label": "Pepper Icon Style",
+        "type": "choice",
+        "display": "radio",
+        "default": "outlined",
+        "choices": [
+          {"label": "Outlined", "value": "outlined"},
+          {"label": "Filled", "value": "filled"}
+        ]
+      }
+    ]
+  }
+]

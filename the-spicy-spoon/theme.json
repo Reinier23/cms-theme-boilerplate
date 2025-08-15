@@ -1,0 +1,24 @@
+{
+  "label": "The Spicy Spoon",
+  "author": {
+    "name": "The Spicy Spoon",
+    "email": "team@spicyspoon.example"
+  },
+  "documentation_url": "https://example.com/docs/the-spicy-spoon",
+  "screenshot_path": "assets/images/placeholder-1-1600x900.jpg",
+  "css": [
+    "assets/css/base.css",
+    "assets/css/theme.css"
+  ],
+  "js": [
+    "assets/js/theme.js"
+  ],
+  "use_theme_settings": true,
+  "enable_domain_stylesheets": false,
+  "responsive_breakpoints": [
+    { "name": "sm", "mediaQuery": "(min-width: 360px)" },
+    { "name": "md", "mediaQuery": "(min-width: 768px)" },
+    { "name": "lg", "mediaQuery": "(min-width: 1024px)" },
+    { "name": "xl", "mediaQuery": "(min-width: 1280px)" }
+  ]
+}

@@ -1,0 +1,37 @@
+{% if content and content.content_type == "BLOG_POST" %}
+{% set spice = content.spice_level or 0 %}
+{% set recipeName = content.name or content.html_title %}
+{% set description = content.meta_description or content.post_summary or "" %}
+{% set image = content.featured_image or get_asset_url("the-spicy-spoon/assets/images/placeholder-1-1600x900.svg") %}
+{% set cuisine = content.cuisine or "" %}
+{% set method = content.method or "" %}
+{% set prep = content.prep_time or 0 %}
+{% set cook = content.cook_time or 0 %}
+{% set total = content.total_time or prep + cook %}
+{% set yield = content.recipe_yield or "1 serving" %}
+{% set nutrition = content.nutrition or {} %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": {{ recipeName|tojson }},
+  "image": [{{ image|tojson }}],
+  "description": {{ description|striptags|trim|tojson }},
+  "author": { "@type": "Organization", "name": "The Spicy Spoon" },
+  "prepTime": "PT{{ prep }}M",
+  "cookTime": "PT{{ cook }}M",
+  "totalTime": "PT{{ total }}M",
+  "recipeYield": {{ yield|tojson }},
+  "recipeCategory": {{ method|tojson }},
+  "recipeCuisine": {{ cuisine|tojson }},
+  {% if nutrition.calories %}
+  "nutrition": { "@type": "NutritionInformation", "calories": {{ nutrition.calories|tojson }} },
+  {% endif %}
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ content.rating or 5 }}",
+    "ratingCount": "{{ content.rating_count or 1 }}"
+  }
+}
+</script>
+{% endif %}

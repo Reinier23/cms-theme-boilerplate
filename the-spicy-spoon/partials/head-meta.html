@@ -1,0 +1,48 @@
+{% set _title = page_meta.html_title or content.meta.html_title or "The Spicy Spoon" %}
+{% set _desc = page_meta.meta_description or content.meta.meta_description or "Spicy recipes, tips, and fiery flavors from The Spicy Spoon." %}
+{% set _img = content.featured_image or get_asset_url("the-spicy-spoon/assets/images/placeholder-1-1600x900.svg") %}
+{% set _type = content and content.content_type == "BLOG_POST" and "article" or "website" %}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ _title }}</title>
+<meta name="description" content="{{ _desc|escape }}">
+<link rel="canonical" href="{{ content.canonical_url or request.full_url }}">
+
+<meta property="og:title" content="{{ _title }}">
+<meta property="og:description" content="{{ _desc|escape }}">
+<meta property="og:type" content="{{ _type }}">
+<meta property="og:url" content="{{ request.full_url }}">
+<meta property="og:image" content="{{ _img }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ _title }}">
+<meta name="twitter:description" content="{{ _desc|escape }}">
+<meta name="twitter:image" content="{{ _img }}">
+
+<style>
+:root{
+  --color-primary: {{ theme.brand.color_primary.color|default('#B71C1C') }};
+  --color-accent: {{ theme.brand.color_accent.color|default('#FF6D00') }};
+  --color-dark: {{ theme.brand.color_dark.color|default('#111111') }};
+  --color-muted: {{ theme.brand.color_muted.color|default('#6B6B6B') }};
+  --heat-100: {{ theme.spice_scale.heat_100.color|default('#FFEDE7') }};
+  --heat-200: {{ theme.spice_scale.heat_200.color|default('#FFD4C7') }};
+  --heat-300: {{ theme.spice_scale.heat_300.color|default('#FFB6A0') }};
+  --heat-400: {{ theme.spice_scale.heat_400.color|default('#FF8C6B') }};
+  --heat-500: {{ theme.spice_scale.heat_500.color|default('#FF6D4A') }};
+  --heat-600: {{ theme.spice_scale.heat_600.color|default('#F4511E') }};
+  --heat-700: {{ theme.spice_scale.heat_700.color|default('#E64A19') }};
+  --heat-800: {{ theme.spice_scale.heat_800.color|default('#D84315') }};
+  --heat-900: {{ theme.spice_scale.heat_900.color|default('#BF360C') }};
+  --container-max: {{ theme.layout.container_max_width or 1200 }}px;
+  --grid-gap: {{ theme.layout.grid_gap or 16 }}px;
+  --radius: {{ theme.layout.card_radius or 10 }}px;
+  --shadow-strength: {{ theme.layout.shadow_strength or 0.15 }};
+  --font-heading: {{ theme.typography.heading_font|tojson|safe }};
+  --font-body: {{ theme.typography.body_font|tojson|safe }};
+  --font-size-base: {{ theme.typography.base_font_size or 16 }}px;
+}
+</style>
+
+{{ standard_header_includes }}
+{% include "the-spicy-spoon/partials/seo-schema.html" %}

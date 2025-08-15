@@ -1,0 +1,16 @@
+{% if content and content.absolute_url %}
+<nav aria-label="Breadcrumb" class="breadcrumbs container">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList" style="display:flex; gap:.5rem; list-style:none; padding:0; margin:.5rem 0; font-size:.9rem;">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a itemprop="item" href="/"><span itemprop="name">Home</span></a>
+      <meta itemprop="position" content="1" />
+    </li>
+    <li aria-hidden="true">/</li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name">{{ content.name or content.html_title }}</span>
+      <meta itemprop="item" content="{{ content.absolute_url }}"/>
+      <meta itemprop="position" content="2" />
+    </li>
+  </ol>
+</nav>
+{% endif %}
