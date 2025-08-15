@@ -1,7 +1,11 @@
 {
   "label": "Recipe Card",
-  "icon": "card",
-  "categories": ["Spicy Spoon – Core"],
+  "icon": "module",
+  "content_types": ["SITE_PAGE"],
   "global": false,
-  "is_available_for_new_content": true
+  "smart_type": "NOT_SMART",
+  "module_category": {
+    "label": "Spicy Spoon – Core",
+    "value": "spicy_spoon_core"
+  }
 }

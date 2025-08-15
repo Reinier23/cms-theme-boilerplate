@@ -1,5 +1,5 @@
 {
-  "label": "Recipe Grid",
+  "label": "Ingredient List",
   "icon": "module",
   "content_types": ["SITE_PAGE"],
   "global": false,

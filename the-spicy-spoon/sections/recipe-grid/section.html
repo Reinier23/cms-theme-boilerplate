@@ -1,0 +1,457 @@
+<!-- Recipe Grid Section -->
+<section class="recipe-grid-section section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    {% dnd_module 
+      path="@hubspot/text"
+      offset=0
+      label="Section Header" 
+    %}
+      {% module_attribute "html" %}
+        <div class="section-header">
+          <h2 class="section-title">Popular Recipes</h2>
+          <p class="section-subtitle">Discover our most-loved spicy recipes from around the world</p>
+        </div>
+      {% end_module_attribute %}
+    {% end_dnd_module %}
+    
+    <!-- Recipes Grid -->
+    <div class="recipes-grid">
+      
+      <!-- Recipe Card 1 -->
+      <article class="recipe-card">
+        {% dnd_module 
+          path="@hubspot/image"
+          offset=1
+          label="Recipe 1 Image" 
+        %}
+          {% module_attribute "src" %}{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-1.svg') }}{% end_module_attribute %}
+          {% module_attribute "alt" %}Spicy Thai Basil Chicken{% end_module_attribute %}
+        {% end_dnd_module %}
+        
+        <div class="recipe-content">
+          <div class="recipe-badges">
+            <span class="recipe-badge recipe-badge--new">New</span>
+            <span class="recipe-heat-level heat-level--3">🌶️🌶️🌶️</span>
+          </div>
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=2
+            label="Recipe 1 Title" 
+          %}
+            {% module_attribute "html" %}
+              <h3 class="recipe-title">Spicy Thai Basil Chicken</h3>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=3
+            label="Recipe 1 Description" 
+          %}
+            {% module_attribute "html" %}
+              <p class="recipe-description">A fiery stir-fry with ground chicken, fresh basil, and chilies that delivers authentic Thai street food flavors</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          <div class="recipe-meta">
+            <div class="recipe-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-text">(127)</span>
+            </div>
+            <div class="recipe-time">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12,6 12,12 16,14"></polyline>
+              </svg>
+              <span>25 min</span>
+            </div>
+          </div>
+          
+          <div class="recipe-tags">
+            <span class="recipe-tag">Thai</span>
+            <span class="recipe-tag">Quick</span>
+            <span class="recipe-tag">Poultry</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Recipe Card 2 -->
+      <article class="recipe-card">
+        {% dnd_module 
+          path="@hubspot/image"
+          offset=4
+          label="Recipe 2 Image" 
+        %}
+          {% module_attribute "src" %}{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-2.svg') }}{% end_module_attribute %}
+          {% module_attribute "alt" %}Jalapeño Cilantro Hot Sauce{% end_module_attribute %}
+        {% end_dnd_module %}
+        
+        <div class="recipe-content">
+          <div class="recipe-badges">
+            <span class="recipe-badge recipe-badge--popular">Popular</span>
+            <span class="recipe-heat-level heat-level--4">🌶️🌶️🌶️🌶️</span>
+          </div>
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=5
+            label="Recipe 2 Title" 
+          %}
+            {% module_attribute "html" %}
+              <h3 class="recipe-title">Jalapeño Cilantro Hot Sauce</h3>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=6
+            label="Recipe 2 Description" 
+          %}
+            {% module_attribute "html" %}
+              <p class="recipe-description">A vibrant green hot sauce with fresh jalapeños, cilantro, and lime that adds heat and herbaceous flavors</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          <div class="recipe-meta">
+            <div class="recipe-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-text">(89)</span>
+            </div>
+            <div class="recipe-time">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12,6 12,12 16,14"></polyline>
+              </svg>
+              <span>15 min</span>
+            </div>
+          </div>
+          
+          <div class="recipe-tags">
+            <span class="recipe-tag">Sauce</span>
+            <span class="recipe-tag">Condiment</span>
+            <span class="recipe-tag">Vegan</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Recipe Card 3 -->
+      <article class="recipe-card">
+        {% dnd_module 
+          path="@hubspot/image"
+          offset=7
+          label="Recipe 3 Image" 
+        %}
+          {% module_attribute "src" %}{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-3.svg') }}{% end_module_attribute %}
+          {% module_attribute "alt" %}Korean Kimchi Fried Rice{% end_module_attribute %}
+        {% end_dnd_module %}
+        
+        <div class="recipe-content">
+          <div class="recipe-badges">
+            <span class="recipe-badge recipe-badge--featured">Featured</span>
+            <span class="recipe-heat-level heat-level--2">🌶️🌶️</span>
+          </div>
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=8
+            label="Recipe 3 Title" 
+          %}
+            {% module_attribute "html" %}
+              <h3 class="recipe-title">Korean Kimchi Fried Rice</h3>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=9
+            label="Recipe 3 Description" 
+          %}
+            {% module_attribute "html" %}
+              <p class="recipe-description">Comfort food meets spice in this satisfying fried rice made with tangy fermented kimchi and aromatic sesame oil</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          <div class="recipe-meta">
+            <div class="recipe-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-text">(203)</span>
+            </div>
+            <div class="recipe-time">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12,6 12,12 16,14"></polyline>
+              </svg>
+              <span>20 min</span>
+            </div>
+          </div>
+          
+          <div class="recipe-tags">
+            <span class="recipe-tag">Korean</span>
+            <span class="recipe-tag">Rice</span>
+            <span class="recipe-tag">Comfort</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Recipe Card 4 -->
+      <article class="recipe-card">
+        {% dnd_module 
+          path="@hubspot/image"
+          offset=10
+          label="Recipe 4 Image" 
+        %}
+          {% module_attribute "src" %}{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-4.svg') }}{% end_module_attribute %}
+          {% module_attribute "alt" %}Spicy Seafood Paella{% end_module_attribute %}
+        {% end_dnd_module %}
+        
+        <div class="recipe-content">
+          <div class="recipe-badges">
+            <span class="recipe-badge recipe-badge--trending">Trending</span>
+            <span class="recipe-heat-level heat-level--2">🌶️🌶️</span>
+          </div>
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=11
+            label="Recipe 4 Title" 
+          %}
+            {% module_attribute "html" %}
+              <h3 class="recipe-title">Spicy Seafood Paella</h3>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=12
+            label="Recipe 4 Description" 
+          %}
+            {% module_attribute "html" %}
+              <p class="recipe-description">A Spanish classic elevated with a spicy twist, featuring fresh seafood, saffron rice, and a hint of cayenne heat</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          <div class="recipe-meta">
+            <div class="recipe-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-text">(156)</span>
+            </div>
+            <div class="recipe-time">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12,6 12,12 16,14"></polyline>
+              </svg>
+              <span>45 min</span>
+            </div>
+          </div>
+          
+          <div class="recipe-tags">
+            <span class="recipe-tag">Spanish</span>
+            <span class="recipe-tag">Seafood</span>
+            <span class="recipe-tag">Rice</span>
+          </div>
+        </div>
+      </article>
+      
+    </div>
+    
+    <!-- Load More -->
+    <div class="recipe-grid-footer">
+      {% dnd_module 
+        path="@hubspot/cta"
+        offset=13
+        label="Load More Button" 
+      %}
+        {% module_attribute "button_text" %}Load More Recipes{% end_module_attribute %}
+        {% module_attribute "link_url" %}/recipes{% end_module_attribute %}
+        {% module_attribute "button_style" %}primary{% end_module_attribute %}
+      {% end_dnd_module %}
+    </div>
+    
+  </div>
+</section>
+
+<style>
+/* Recipe Grid Section Styles */
+.recipe-grid-section {
+  padding: 4rem 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-neutral-900, #212121);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-neutral-600, #757575);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.recipe-card {
+  background: white;
+  border-radius: var(--border-radius, 12px);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid var(--color-neutral-200, #E0E0E0);
+}
+
+.recipe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg, 0 8px 25px rgba(0, 0, 0, 0.15));
+  border-color: var(--color-primary, #B71C1C);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-content {
+  padding: 1.5rem;
+}
+
+.recipe-badges {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.recipe-badge {
+  background: var(--color-primary, #B71C1C);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.recipe-badge--new { background: var(--color-success, #2E7D32); }
+.recipe-badge--popular { background: var(--color-accent, #FF6D00); }
+.recipe-badge--featured { background: var(--color-primary, #B71C1C); }
+.recipe-badge--trending { background: var(--color-warning, #F57C00); }
+
+.recipe-heat-level {
+  font-size: 0.9rem;
+}
+
+.recipe-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-neutral-900, #212121);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.recipe-description {
+  color: var(--color-neutral-600, #757575);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.recipe-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.recipe-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  color: var(--color-warning, #F57C00);
+  font-size: 1rem;
+}
+
+.rating-text {
+  color: var(--color-neutral-600, #757575);
+}
+
+.recipe-time {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--color-neutral-600, #757575);
+}
+
+.recipe-time svg {
+  width: 16px;
+  height: 16px;
+}
+
+.recipe-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.recipe-tag {
+  background: var(--color-neutral-100, #F5F5F5);
+  color: var(--color-neutral-700, #424242);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid var(--color-neutral-200, #E0E0E0);
+}
+
+.recipe-grid-footer {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .recipes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .recipe-content {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recipe-card {
+    transition: none;
+  }
+  
+  .recipe-card:hover {
+    transform: none;
+  }
+}
+</style>

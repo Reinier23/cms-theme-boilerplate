@@ -1,0 +1,320 @@
+<!-- Featured Collections Section -->
+<section class="featured-collections section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    {% dnd_module 
+      path="@hubspot/text"
+      offset=0
+      label="Section Title" 
+    %}
+      {% module_attribute "html" %}
+        <div class="section-header">
+          <h2 class="section-title">Featured Collections</h2>
+          <p class="section-subtitle">Explore our carefully curated recipe collections</p>
+        </div>
+      {% end_module_attribute %}
+    {% end_dnd_module %}
+    
+    <!-- Collections Grid -->
+    <div class="collections-grid">
+      
+      <!-- Collection 1 -->
+      <div class="collection-tile">
+        {% dnd_module 
+          path="@hubspot/image"
+          offset=1
+          label="Collection 1 Image" 
+        %}
+          {% module_attribute "src" %}{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-1.svg') }}{% end_module_attribute %}
+          {% module_attribute "alt" %}Fiery Thai Cuisine Collection{% end_module_attribute %}
+        {% end_dnd_module %}
+        
+        <div class="collection-content">
+          <div class="collection-badge">🌶️🌶️🌶️</div>
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=2
+            label="Collection 1 Title" 
+          %}
+            {% module_attribute "html" %}
+              <h3 class="collection-title">Fiery Thai Cuisine</h3>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=3
+            label="Collection 1 Description" 
+          %}
+            {% module_attribute "html" %}
+              <p class="collection-description">Authentic Thai recipes with bold flavors and perfect heat balance</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          <div class="collection-meta">
+            <span class="collection-count">24 Recipes</span>
+            <span class="collection-difficulty">Intermediate</span>
+          </div>
+          
+          {% dnd_module 
+            path="@hubspot/cta"
+            offset=4
+            label="Collection 1 Link" 
+          %}
+            {% module_attribute "button_text" %}Explore Thai{% end_module_attribute %}
+            {% module_attribute "link_url" %}/collections/thai{% end_module_attribute %}
+            {% module_attribute "button_style" %}primary{% end_module_attribute %}
+          {% end_dnd_module %}
+        </div>
+      </div>
+      
+      <!-- Collection 2 -->
+      <div class="collection-tile">
+        {% dnd_module 
+          path="@hubspot/image"
+          offset=5
+          label="Collection 2 Image" 
+        %}
+          {% module_attribute "src" %}{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-2.svg') }}{% end_module_attribute %}
+          {% module_attribute "alt" %}Quick Spicy Meals Collection{% end_module_attribute %}
+        {% end_dnd_module %}
+        
+        <div class="collection-content">
+          <div class="collection-badge">⚡ 30 MIN</div>
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=6
+            label="Collection 2 Title" 
+          %}
+            {% module_attribute "html" %}
+              <h3 class="collection-title">Quick Spicy Meals</h3>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=7
+            label="Collection 2 Description" 
+          %}
+            {% module_attribute "html" %}
+              <p class="collection-description">Fast and flavorful recipes perfect for busy weeknight dinners</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          <div class="collection-meta">
+            <span class="collection-count">18 Recipes</span>
+            <span class="collection-difficulty">Beginner</span>
+          </div>
+          
+          {% dnd_module 
+            path="@hubspot/cta"
+            offset=8
+            label="Collection 2 Link" 
+          %}
+            {% module_attribute "button_text" %}Quick Meals{% end_module_attribute %}
+            {% module_attribute "link_url" %}/collections/quick-meals{% end_module_attribute %}
+            {% module_attribute "button_style" %}primary{% end_module_attribute %}
+          {% end_dnd_module %}
+        </div>
+      </div>
+      
+      <!-- Collection 3 -->
+      <div class="collection-tile">
+        {% dnd_module 
+          path="@hubspot/image"
+          offset=9
+          label="Collection 3 Image" 
+        %}
+          {% module_attribute "src" %}{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-3.svg') }}{% end_module_attribute %}
+          {% module_attribute "alt" %}Hot Sauce Essentials Collection{% end_module_attribute %}
+        {% end_dnd_module %}
+        
+        <div class="collection-content">
+          <div class="collection-badge">🔥 HOT</div>
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=10
+            label="Collection 3 Title" 
+          %}
+            {% module_attribute "html" %}
+              <h3 class="collection-title">Hot Sauce Essentials</h3>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          {% dnd_module 
+            path="@hubspot/text"
+            offset=11
+            label="Collection 3 Description" 
+          %}
+            {% module_attribute "html" %}
+              <p class="collection-description">Master the art of hot sauce making with these essential recipes</p>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+          
+          <div class="collection-meta">
+            <span class="collection-count">12 Recipes</span>
+            <span class="collection-difficulty">Advanced</span>
+          </div>
+          
+          {% dnd_module 
+            path="@hubspot/cta"
+            offset=12
+            label="Collection 3 Link" 
+          %}
+            {% module_attribute "button_text" %}Hot Sauces{% end_module_attribute %}
+            {% module_attribute "link_url" %}/collections/hot-sauces{% end_module_attribute %}
+            {% module_attribute "button_style" %}primary{% end_module_attribute %}
+          {% end_dnd_module %}
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- View All Link -->
+    <div class="collections-footer">
+      {% dnd_module 
+        path="@hubspot/cta"
+        offset=13
+        label="View All Collections Link" 
+      %}
+        {% module_attribute "button_text" %}View All Collections{% end_module_attribute %}
+        {% module_attribute "link_url" %}/collections{% end_module_attribute %}
+        {% module_attribute "button_style" %}secondary{% end_module_attribute %}
+      {% end_dnd_module %}
+    </div>
+    
+  </div>
+</section>
+
+<style>
+/* Featured Collections Styles */
+.featured-collections {
+  padding: 4rem 0;
+  background: var(--color-neutral-100, #F5F5F5);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-neutral-900, #212121);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-neutral-600, #757575);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.collection-tile {
+  background: white;
+  border-radius: var(--border-radius, 12px);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.collection-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg, 0 8px 25px rgba(0, 0, 0, 0.15));
+}
+
+.collection-tile img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.collection-content {
+  padding: 1.5rem;
+  position: relative;
+}
+
+.collection-badge {
+  position: absolute;
+  top: -20px;
+  right: 1.5rem;
+  background: var(--color-primary, #B71C1C);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.collection-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-neutral-900, #212121);
+  margin-bottom: 0.75rem;
+  margin-top: 1rem;
+}
+
+.collection-description {
+  color: var(--color-neutral-600, #757575);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.collection-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.collection-count {
+  color: var(--color-primary, #B71C1C);
+  font-weight: 600;
+}
+
+.collection-difficulty {
+  color: var(--color-neutral-600, #757575);
+}
+
+.collections-footer {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .collections-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .collection-tile {
+    margin: 0 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collection-tile {
+    transition: none;
+  }
+  
+  .collection-tile:hover {
+    transform: none;
+  }
+}
+</style>

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "background_image",
+    "label": "Background Image",
+    "type": "image",
+    "default": {
+      "src": "",
+      "alt": "Hero background"
+    }
+  },
+  {
+    "name": "overlay_strength",
+    "label": "Overlay Strength",
+    "type": "choice",
+    "choices": [
+      ["none", "None"],
+      ["light", "Light"],
+      ["medium", "Medium"],
+      ["strong", "Strong"]
+    ],
+    "default": "medium"
+  },
+  {
+    "name": "text_alignment",
+    "label": "Text Alignment",
+    "type": "choice",
+    "choices": [
+      ["left", "Left"],
+      ["center", "Center"],
+      ["right", "Right"]
+    ],
+    "default": "center"
+  },
+  {
+    "name": "container_width",
+    "label": "Container Width",
+    "type": "choice",
+    "choices": [
+      ["narrow", "Narrow (720px)"],
+      ["normal", "Normal (1200px)"],
+      ["wide", "Wide (1400px)"],
+      ["full", "Full Width"]
+    ],
+    "default": "normal"
+  },
+  {
+    "name": "top_spacing",
+    "label": "Top Spacing",
+    "type": "choice",
+    "choices": [
+      ["none", "None"],
+      ["small", "Small"],
+      ["medium", "Medium"],
+      ["large", "Large"],
+      ["xlarge", "X-Large"]
+    ],
+    "default": "large"
+  },
+  {
+    "name": "bottom_spacing",
+    "label": "Bottom Spacing",
+    "type": "choice",
+    "choices": [
+      ["none", "None"],
+      ["small", "Small"],
+      ["medium", "Medium"],
+      ["large", "Large"],
+      ["xlarge", "X-Large"]
+    ],
+    "default": "large"
+  }
+]

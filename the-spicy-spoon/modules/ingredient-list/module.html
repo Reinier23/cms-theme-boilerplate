@@ -1,0 +1,474 @@
+<!-- Ingredient List Module -->
+<div class="ingredient-list-module">
+  
+  <!-- Section Header -->
+  <div class="ingredient-header">
+    <h3 class="ingredient-title">{{ module.section_title or "Ingredients" }}</h3>
+    
+    <!-- Controls Row -->
+    <div class="ingredient-controls">
+      
+      <!-- Serving Scaler -->
+      {% if module.show_scaling %}
+      <div class="serving-scaler">
+        <label for="servings-{{ name }}" class="scaler-label">Servings:</label>
+        <div class="scaler-input-group">
+          <button type="button" class="scaler-btn scaler-decrease" aria-label="Decrease servings">-</button>
+          <input 
+            type="number" 
+            id="servings-{{ name }}" 
+            class="scaler-input" 
+            value="{{ module.servings or 4 }}" 
+            min="1" 
+            max="12"
+            aria-label="Number of servings"
+          >
+          <button type="button" class="scaler-btn scaler-increase" aria-label="Increase servings">+</button>
+        </div>
+      </div>
+      {% endif %}
+      
+      <!-- Check Controls -->
+      {% if module.show_controls %}
+      <div class="check-controls">
+        <button type="button" class="check-btn check-all" data-target="{{ name }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <polyline points="20,6 9,17 4,12"></polyline>
+          </svg>
+          Check All
+        </button>
+        <button type="button" class="check-btn clear-all" data-target="{{ name }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+          Clear All
+        </button>
+      </div>
+      {% endif %}
+      
+    </div>
+  </div>
+  
+  <!-- Ingredient Groups -->
+  <div class="ingredient-groups" id="ingredients-{{ name }}">
+    
+    {% set ingredients_text = module.ingredient_groups.ingredients or module.ingredients or "2 tablespoons vegetable oil\n1 pound ground chicken\n3-4 Thai bird's eye chilies, minced\n4 cloves garlic, minced\n1 large onion, sliced\n1 cup fresh Thai basil leaves\n2 tablespoons fish sauce\n1 tablespoon soy sauce\n1 tablespoon brown sugar\n1 lime, juiced" %}
+    
+    <!-- Group Title -->
+    {% if module.ingredient_groups.group_title %}
+    <h4 class="ingredient-group-title">{{ module.ingredient_groups.group_title }}</h4>
+    {% endif %}
+    
+    <!-- Ingredients List -->
+    <ul class="ingredient-list" role="list">
+      {% for ingredient in ingredients_text.split('\n') %}
+        {% if ingredient.strip() %}
+        <li class="ingredient-item">
+          <label class="ingredient-label">
+            <input 
+              type="checkbox" 
+              class="ingredient-checkbox"
+              id="ingredient-{{ name }}-{{ loop.index }}"
+              aria-describedby="ingredient-text-{{ name }}-{{ loop.index }}"
+            >
+            <span class="ingredient-checkmark" aria-hidden="true"></span>
+            <span class="ingredient-text" id="ingredient-text-{{ name }}-{{ loop.index }}">
+              {{ ingredient.strip() }}
+            </span>
+          </label>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    
+  </div>
+  
+  <!-- Screen Reader Announcements -->
+  <div aria-live="polite" aria-atomic="true" class="sr-only" id="ingredient-announcements-{{ name }}"></div>
+  
+</div>
+
+<style>
+/* Ingredient List Module Styles */
+.ingredient-list-module {
+  background: white;
+  border: 1px solid var(--color-neutral-200, #E0E0E0);
+  border-radius: var(--border-radius, 8px);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.ingredient-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-neutral-100, #F5F5F5);
+}
+
+.ingredient-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-neutral-900, #212121);
+  margin: 0;
+}
+
+.ingredient-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Serving Scaler */
+.serving-scaler {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.scaler-label {
+  font-weight: 500;
+  color: var(--color-neutral-700, #424242);
+}
+
+.scaler-input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-neutral-300, #BDBDBD);
+  border-radius: var(--border-radius-sm, 4px);
+  overflow: hidden;
+}
+
+.scaler-btn {
+  background: var(--color-neutral-100, #F5F5F5);
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-neutral-700, #424242);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  min-width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scaler-btn:hover {
+  background: var(--color-neutral-200, #E0E0E0);
+}
+
+.scaler-btn:focus {
+  outline: 2px solid var(--color-primary, #B71C1C);
+  outline-offset: -2px;
+}
+
+.scaler-input {
+  border: none;
+  padding: 0.5rem;
+  width: 60px;
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-neutral-900, #212121);
+}
+
+.scaler-input:focus {
+  outline: 2px solid var(--color-primary, #B71C1C);
+  outline-offset: -2px;
+}
+
+/* Check Controls */
+.check-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.check-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: transparent;
+  border: 1px solid var(--color-neutral-300, #BDBDBD);
+  border-radius: var(--border-radius-sm, 4px);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-neutral-700, #424242);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.check-btn:hover {
+  background: var(--color-neutral-100, #F5F5F5);
+  border-color: var(--color-primary, #B71C1C);
+  color: var(--color-primary, #B71C1C);
+}
+
+.check-btn:focus {
+  outline: 2px solid var(--color-primary, #B71C1C);
+  outline-offset: 2px;
+}
+
+.check-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Ingredient Groups */
+.ingredient-group-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-neutral-800, #333333);
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.ingredient-group-title:first-child {
+  margin-top: 0;
+}
+
+/* Ingredient List */
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredient-item {
+  margin-bottom: 0.75rem;
+}
+
+.ingredient-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-radius-sm, 4px);
+  transition: background-color 0.2s ease;
+}
+
+.ingredient-label:hover {
+  background: var(--color-neutral-50, #FAFAFA);
+}
+
+.ingredient-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ingredient-checkmark {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-neutral-300, #BDBDBD);
+  border-radius: var(--border-radius-sm, 4px);
+  background: white;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  margin-top: 1px;
+}
+
+.ingredient-checkmark::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.ingredient-checkbox:checked + .ingredient-checkmark {
+  background: var(--color-primary, #B71C1C);
+  border-color: var(--color-primary, #B71C1C);
+}
+
+.ingredient-checkbox:checked + .ingredient-checkmark::after {
+  opacity: 1;
+}
+
+.ingredient-checkbox:focus + .ingredient-checkmark {
+  outline: 2px solid var(--color-primary, #B71C1C);
+  outline-offset: 2px;
+}
+
+.ingredient-text {
+  flex: 1;
+  line-height: 1.4;
+  color: var(--color-neutral-900, #212121);
+  transition: all 0.2s ease;
+}
+
+.ingredient-checkbox:checked ~ .ingredient-text {
+  text-decoration: line-through;
+  color: var(--color-neutral-500, #9E9E9E);
+}
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ingredient-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .serving-scaler {
+    justify-content: space-between;
+  }
+  
+  .check-controls {
+    justify-content: center;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .ingredient-controls {
+    display: none;
+  }
+  
+  .ingredient-checkmark {
+    border: 1px solid #000;
+  }
+  
+  .ingredient-checkbox:checked + .ingredient-checkmark {
+    background: #000;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .ingredient-label,
+  .ingredient-checkmark,
+  .ingredient-checkmark::after,
+  .ingredient-text,
+  .scaler-btn,
+  .check-btn {
+    transition: none;
+  }
+}
+</style>
+
+<script>
+// Ingredient List Module JavaScript
+(function() {
+  'use strict';
+  
+  // Module initialization
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeIngredientLists();
+  });
+  
+  function initializeIngredientLists() {
+    const modules = document.querySelectorAll('.ingredient-list-module');
+    
+    modules.forEach(function(module) {
+      const moduleId = module.querySelector('[id*="ingredients-"]')?.id.split('-').pop();
+      if (!moduleId) return;
+      
+      initializeScaler(module, moduleId);
+      initializeCheckControls(module, moduleId);
+    });
+  }
+  
+  function initializeScaler(module, moduleId) {
+    const scaler = module.querySelector('.serving-scaler');
+    if (!scaler) return;
+    
+    const input = scaler.querySelector('.scaler-input');
+    const decreaseBtn = scaler.querySelector('.scaler-decrease');
+    const increaseBtn = scaler.querySelector('.scaler-increase');
+    
+    if (!input || !decreaseBtn || !increaseBtn) return;
+    
+    decreaseBtn.addEventListener('click', function() {
+      const currentValue = parseInt(input.value) || 1;
+      if (currentValue > 1) {
+        input.value = currentValue - 1;
+        announceServingChange(moduleId, input.value);
+      }
+    });
+    
+    increaseBtn.addEventListener('click', function() {
+      const currentValue = parseInt(input.value) || 1;
+      if (currentValue < 12) {
+        input.value = currentValue + 1;
+        announceServingChange(moduleId, input.value);
+      }
+    });
+    
+    input.addEventListener('change', function() {
+      const value = parseInt(this.value) || 1;
+      this.value = Math.max(1, Math.min(12, value));
+      announceServingChange(moduleId, this.value);
+    });
+  }
+  
+  function initializeCheckControls(module, moduleId) {
+    const checkAllBtn = module.querySelector('.check-all');
+    const clearAllBtn = module.querySelector('.clear-all');
+    const checkboxes = module.querySelectorAll('.ingredient-checkbox');
+    
+    if (checkAllBtn) {
+      checkAllBtn.addEventListener('click', function() {
+        checkboxes.forEach(function(checkbox) {
+          checkbox.checked = true;
+        });
+        announceCheckAction(moduleId, 'All ingredients checked');
+      });
+    }
+    
+    if (clearAllBtn) {
+      clearAllBtn.addEventListener('click', function() {
+        checkboxes.forEach(function(checkbox) {
+          checkbox.checked = false;
+        });
+        announceCheckAction(moduleId, 'All ingredients unchecked');
+      });
+    }
+  }
+  
+  function announceServingChange(moduleId, servings) {
+    const announcement = `Servings changed to ${servings}`;
+    announceToScreenReader(moduleId, announcement);
+  }
+  
+  function announceCheckAction(moduleId, message) {
+    announceToScreenReader(moduleId, message);
+  }
+  
+  function announceToScreenReader(moduleId, message) {
+    const announcementElement = document.getElementById(`ingredient-announcements-${moduleId}`);
+    if (announcementElement) {
+      announcementElement.textContent = message;
+      
+      // Clear the announcement after a brief delay
+      setTimeout(function() {
+        announcementElement.textContent = '';
+      }, 1000);
+    }
+  }
+  
+})();
+</script>

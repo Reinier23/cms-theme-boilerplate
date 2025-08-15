@@ -1,0 +1,281 @@
+<!-- Category Highlights Section -->
+<section class="category-highlights section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    {% dnd_module 
+      path="@hubspot/text"
+      offset=0
+      label="Section Title" 
+    %}
+      {% module_attribute "html" %}
+        <div class="section-header">
+          <h2 class="section-title">Explore by Category</h2>
+          <p class="section-subtitle">Find your perfect spice level and cuisine style</p>
+        </div>
+      {% end_module_attribute %}
+    {% end_dnd_module %}
+    
+    <!-- Categories Grid -->
+    <div class="categories-grid">
+      
+      <!-- Thai Category -->
+      <a href="/categories/thai" class="category-card" aria-label="Thai Cuisine Category">
+        <div class="category-icon">🇹🇭</div>
+        <h3 class="category-title">Thai</h3>
+        <p class="category-description">Authentic Thai flavors with perfect heat balance</p>
+        <div class="category-meta">
+          <span class="category-count">24 recipes</span>
+          <div class="category-heat">🌶️🌶️🌶️</div>
+        </div>
+      </a>
+      
+      <!-- Mexican Category -->
+      <a href="/categories/mexican" class="category-card" aria-label="Mexican Cuisine Category">
+        <div class="category-icon">🇲🇽</div>
+        <h3 class="category-title">Mexican</h3>
+        <p class="category-description">Bold and fiery dishes from Mexico</p>
+        <div class="category-meta">
+          <span class="category-count">31 recipes</span>
+          <div class="category-heat">🌶️🌶️🌶️🌶️</div>
+        </div>
+      </a>
+      
+      <!-- Indian Category -->
+      <a href="/categories/indian" class="category-card" aria-label="Indian Cuisine Category">
+        <div class="category-icon">🇮🇳</div>
+        <h3 class="category-title">Indian</h3>
+        <p class="category-description">Complex spice blends and aromatic curries</p>
+        <div class="category-meta">
+          <span class="category-count">28 recipes</span>
+          <div class="category-heat">🌶️🌶️🌶️</div>
+        </div>
+      </a>
+      
+      <!-- Korean Category -->
+      <a href="/categories/korean" class="category-card" aria-label="Korean Cuisine Category">
+        <div class="category-icon">🇰🇷</div>
+        <h3 class="category-title">Korean</h3>
+        <p class="category-description">Fermented flavors and gochujang goodness</p>
+        <div class="category-meta">
+          <span class="category-count">19 recipes</span>
+          <div class="category-heat">🌶️🌶️</div>
+        </div>
+      </a>
+      
+      <!-- Hot Sauces Category -->
+      <a href="/categories/hot-sauces" class="category-card" aria-label="Hot Sauces Category">
+        <div class="category-icon">🌶️</div>
+        <h3 class="category-title">Hot Sauces</h3>
+        <p class="category-description">DIY sauces to spice up any dish</p>
+        <div class="category-meta">
+          <span class="category-count">15 recipes</span>
+          <div class="category-heat">🌶️🌶️🌶️🌶️🌶️</div>
+        </div>
+      </a>
+      
+      <!-- Quick Meals Category -->
+      <a href="/categories/quick-meals" class="category-card" aria-label="Quick Meals Category">
+        <div class="category-icon">⚡</div>
+        <h3 class="category-title">Quick Meals</h3>
+        <p class="category-description">30-minute spicy dishes for busy nights</p>
+        <div class="category-meta">
+          <span class="category-count">22 recipes</span>
+          <div class="category-heat">🌶️🌶️</div>
+        </div>
+      </a>
+      
+    </div>
+    
+    <!-- View All Categories -->
+    <div class="categories-footer">
+      {% dnd_module 
+        path="@hubspot/cta"
+        offset=1
+        label="View All Categories Link" 
+      %}
+        {% module_attribute "button_text" %}Browse All Categories{% end_module_attribute %}
+        {% module_attribute "link_url" %}/categories{% end_module_attribute %}
+        {% module_attribute "button_style" %}secondary{% end_module_attribute %}
+      {% end_dnd_module %}
+    </div>
+    
+  </div>
+</section>
+
+<style>
+/* Category Highlights Styles */
+.category-highlights {
+  padding: 4rem 0;
+  background: white;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-neutral-900, #212121);
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-neutral-600, #757575);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.category-card {
+  background: white;
+  border: 2px solid var(--color-neutral-200, #E0E0E0);
+  border-radius: var(--border-radius, 12px);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.category-card:hover {
+  border-color: var(--color-primary, #B71C1C);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg, 0 8px 25px rgba(0, 0, 0, 0.15));
+  text-decoration: none;
+  color: inherit;
+}
+
+.category-card:hover::before {
+  left: 100%;
+}
+
+.category-card:focus {
+  outline: 2px solid var(--color-primary, #B71C1C);
+  outline-offset: 2px;
+}
+
+.category-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.category-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-neutral-900, #212121);
+  margin-bottom: 0.75rem;
+}
+
+.category-description {
+  color: var(--color-neutral-600, #757575);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.category-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.category-count {
+  color: var(--color-primary, #B71C1C);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.category-heat {
+  font-size: 0.9rem;
+}
+
+.categories-footer {
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .categories-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .category-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .category-icon {
+    font-size: 2.5rem;
+  }
+  
+  .category-title {
+    font-size: 1.25rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}
+
+/* Accessibility and Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .category-card {
+    transition: none;
+  }
+  
+  .category-card:hover {
+    transform: none;
+  }
+  
+  .category-card::before {
+    display: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .category-card {
+    border-width: 3px;
+  }
+  
+  .category-card:hover {
+    background: var(--color-neutral-100, #F5F5F5);
+  }
+}
+</style>
