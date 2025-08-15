@@ -17,9 +17,9 @@
   "use_theme_settings": true,
   "enable_domain_stylesheets": false,
   "responsive_breakpoints": [
-    { "name": "sm", "mediaQuery": "(min-width: 360px)" },
-    { "name": "md", "mediaQuery": "(min-width: 768px)" },
-    { "name": "lg", "mediaQuery": "(min-width: 1024px)" },
-    { "name": "xl", "mediaQuery": "(min-width: 1280px)" }
+    { "name": "sm", "mediaQuery": "(min-width: 360px)", "previewWidth": 360 },
+    { "name": "md", "mediaQuery": "(min-width: 768px)", "previewWidth": 768 },
+    { "name": "lg", "mediaQuery": "(min-width: 1024px)", "previewWidth": 1024 },
+    { "name": "xl", "mediaQuery": "(min-width: 1280px)", "previewWidth": 1280 }
   ]
 }
