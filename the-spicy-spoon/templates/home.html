@@ -1,7 +1,7 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Home - Spicy Recipes
+  label: Home - Spicy Recipes (Drag & Drop)
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -13,273 +13,174 @@
 <body class="loading">
     {% include "the-spicy-spoon/partials/site-header.html" %}
     
-    <!-- Hero Section with Search -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero__title">Turn Up the Heat</h1>
-                <p class="hero__subtitle">Discover fiery flavors and spicy recipes that will ignite your taste buds. From mild warmth to volcanic heat – find your perfect spice level.</p>
-                
-                <!-- Hero Search Bar -->
-                <div class="hero-search">
-                    <form action="/recipes" method="get" role="search" aria-label="Search recipes">
-                        <div class="search-bar">
-                            <input 
-                                type="search" 
-                                name="q" 
-                                class="search-bar__input" 
-                                placeholder="Search for spicy recipes, ingredients, or cuisines..." 
-                                aria-label="Search recipes"
-                            >
-                            <button type="submit" class="search-bar__button" aria-label="Search">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="M21 21l-4.35-4.35"></path>
-                                </svg>
-                                Search
-                            </button>
-                        </div>
-                    </form>
-                    
-                    <!-- Popular Search Terms -->
-                    <div class="search-suggestions">
-                        <span class="search-suggestions__label">Popular:</span>
-                        <a href="/recipes?q=thai+curry" class="chip">Thai Curry</a>
-                        <a href="/recipes?q=hot+sauce" class="chip">Hot Sauce</a>
-                        <a href="/recipes?q=jalapeño" class="chip">Jalapeño</a>
-                        <a href="/recipes?q=sriracha" class="chip">Sriracha</a>
-                        <a href="/recipes?heat=5" class="chip chip--hot">Extra Hot 🔥</a>
-                    </div>
-                </div>
-                
-                <!-- Quick Stats -->
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <strong>500+</strong>
-                        <span>Fiery Recipes</span>
-                    </div>
-                    <div class="stat-item">
-                        <strong>15+</strong>
-                        <span>Cuisines</span>
-                    </div>
-                    <div class="stat-item">
-                        <strong>5</strong>
-                        <span>Heat Levels</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Featured Collections -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>🔥 Featured Collections</h2>
-                <p>Handpicked recipe collections for every spice lover</p>
-                <a href="/collections" class="btn btn-secondary">View All Collections</a>
-            </div>
-            
-            <div class="collections-grid">
-                <article class="collection-card collection-card--large">
-                    <div class="collection-card__image">
-                        <img src="{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/hero.svg') }}" alt="Beginner-friendly spicy recipes" loading="lazy">
-                        <div class="collection-card__badge">New</div>
-                    </div>
-                    <div class="collection-card__content">
-                        <h3>Spice Beginners</h3>
-                        <p>Perfect introduction to spicy cooking with mild heat levels and approachable flavors.</p>
-                        <div class="collection-meta">
-                            <span class="recipe-count">24 recipes</span>
-                            <span class="heat-level">🌶️ Mild to Medium</span>
-                        </div>
-                        <a href="/collections/spice-beginners" class="btn btn-primary">Explore Collection</a>
-                    </div>
-                </article>
-                
-                <article class="collection-card">
-                    <div class="collection-card__image">
-                        <img src="{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-1.svg') }}" alt="Weekend warrior spicy recipes" loading="lazy">
-                    </div>
-                    <div class="collection-card__content">
-                        <h3>Weekend Warriors</h3>
-                        <p>Complex recipes for when you have time to create something amazing.</p>
-                        <div class="collection-meta">
-                            <span class="recipe-count">18 recipes</span>
-                            <span class="heat-level">🌶️🌶️🌶️ Medium to Hot</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="collection-card">
-                    <div class="collection-card__image">
-                        <img src="{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-2.svg') }}" alt="30-minute spicy meals" loading="lazy">
-                        <div class="collection-card__badge">Popular</div>
-                    </div>
-                    <div class="collection-card__content">
-                        <h3>30-Minute Heat</h3>
-                        <p>Quick and spicy meals for busy weeknights that don't compromise on flavor.</p>
-                        <div class="collection-meta">
-                            <span class="recipe-count">32 recipes</span>
-                            <span class="heat-level">🌶️🌶️ Mild to Medium</span>
-                        </div>
-                    </div>
-                </article>
-                
-                <article class="collection-card">
-                    <div class="collection-card__image">
-                        <img src="{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-3.svg') }}" alt="Extreme heat challenge recipes" loading="lazy">
-                    </div>
-                    <div class="collection-card__content">
-                        <h3>Extreme Heat</h3>
-                        <p>For the brave souls who crave volcanic heat and intense flavors.</p>
-                        <div class="collection-meta">
-                            <span class="recipe-count">12 recipes</span>
-                            <span class="heat-level">🌶️🌶️🌶️🌶️🌶️ Volcanic</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Featured Recipes -->
-    <section class="section" style="background: var(--color-neutral-100);">
-        <div class="container">
-            <div class="section-header">
-                <h2>⭐ This Week's Fire</h2>
-                <p>Our most popular and highest-rated spicy recipes</p>
-                <a href="/recipes" class="btn btn-secondary">Browse All Recipes</a>
-            </div>
-            
-            <div class="recipe-grid grid grid-auto-fit">
-                <!-- Recipe Card 1 -->
-                <article class="recipe-card">
-                    <div class="recipe-card__image">
-                        <img src="{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-1.svg') }}" alt="Thai Spicy Basil Stir-Fry recipe" loading="lazy">
-                        <div class="recipe-card__badge">Popular</div>
-                    </div>
-                    <div class="recipe-card__content">
-                        <h3 class="recipe-card__title">Thai Spicy Basil Stir-Fry</h3>
-                        <p class="recipe-card__description">A fiery Thai classic with fresh basil, chilies, and aromatic spices that delivers authentic street food flavors.</p>
-                        
-                        <div class="recipe-card__meta">
-                            <div class="recipe-card__rating">
-                                <div class="star-rating" aria-label="4.8 out of 5 stars">
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star star--empty" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                </div>
-                                <span>(142 reviews)</span>
-                            </div>
-                            <span>⏱️ 20 min</span>
-                            <span>🍽️ Thai</span>
-                        </div>
-                        
-                        <div class="heat-level">
-                            Heat Level: 🌶️🌶️🌶️🌶️ (Very Hot)
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- Recipe Card 2 -->
-                <article class="recipe-card">
-                    <div class="recipe-card__image">
-                        <img src="{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-2.svg') }}" alt="Mexican Jalapeño Salsa recipe" loading="lazy">
-                    </div>
-                    <div class="recipe-card__content">
-                        <h3 class="recipe-card__title">Mexican Jalapeño Salsa</h3>
-                        <p class="recipe-card__description">Fresh and zesty salsa with the perfect kick of jalapeño heat, lime juice, and garden-fresh ingredients.</p>
-                        
-                        <div class="recipe-card__meta">
-                            <div class="recipe-card__rating">
-                                <div class="star-rating" aria-label="4.6 out of 5 stars">
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star star--empty" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                </div>
-                                <span>(89 reviews)</span>
-                            </div>
-                            <span>⏱️ 10 min</span>
-                            <span>🍽️ Mexican</span>
-                        </div>
-                        
-                        <div class="heat-level">
-                            Heat Level: 🌶️🌶️🌶️ (Hot)
-                        </div>
-                    </div>
-                </article>
-                
-                <!-- Recipe Card 3 -->
-                <article class="recipe-card">
-                    <div class="recipe-card__image">
-                        <img src="{{ get_asset_url('the-spicy-spoon/assets/images/placeholders/card-3.svg') }}" alt="Korean Kimchi Fried Rice recipe" loading="lazy">
-                        <div class="recipe-card__badge">New</div>
-                    </div>
-                    <div class="recipe-card__content">
-                        <h3 class="recipe-card__title">Korean Kimchi Fried Rice</h3>
-                        <p class="recipe-card__description">Fermented kimchi adds incredible depth and heat to this satisfying fried rice with crispy edges.</p>
-                        
-                        <div class="recipe-card__meta">
-                            <div class="recipe-card__rating">
-                                <div class="star-rating" aria-label="4.9 out of 5 stars">
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                    <svg class="star" viewBox="0 0 24 24"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9"/></svg>
-                                </div>
-                                <span>(67 reviews)</span>
-                            </div>
-                            <span>⏱️ 15 min</span>
-                            <span>🍽️ Korean</span>
-                        </div>
-                        
-                        <div class="heat-level">
-                            Heat Level: 🌶️🌶️🌶️ (Hot)
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Spice Knowledge Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>🧠 Spice Wisdom</h2>
-                <p>Pro tips and knowledge to level up your spicy cooking game</p>
-            </div>
-            
-            <div class="knowledge-grid">
-                <article class="tip-card">
-                    <div class="tip-card__icon">🧤</div>
-                    <h3>Handling Hot Peppers</h3>
-                    <p>Always wear gloves when handling super-hot peppers, and never touch your eyes! The capsaicin oils can linger on your hands for hours even after washing.</p>
-                    <a href="/tips/pepper-safety" class="tip-card__link">Learn More →</a>
-                </article>
-                
-                <article class="tip-card">
-                    <div class="tip-card__icon">🥛</div>
-                    <h3>Cool Down Strategy</h3>
-                    <p>If a dish is too spicy, dairy products like yogurt or milk are your best friends. The casein protein helps neutralize capsaicin better than water.</p>
-                    <a href="/tips/cooling-down" class="tip-card__link">Learn More →</a>
-                </article>
-                
-                <article class="tip-card">
-                    <div class="tip-card__icon">🌡️</div>
-                    <h3>Scoville Scale Guide</h3>
-                    <p>Understanding the Scoville scale helps you choose the right heat level. Bell peppers are 0, jalapeños are 2,500-8,000, and Carolina Reapers hit 2.2 million!</p>
-                    <a href="/spice-guide" class="tip-card__link">Explore Scale →</a>
-                </article>
-            </div>
-        </div>
-    </section>
+    <!-- Main Content Area - Drag & Drop Enabled -->
+    {% dnd_area "main_content" %}
+        
+        <!-- Hero Module Area -->
+        {% dnd_module "hero_section" %}
+            {% module "hero_banner" 
+                path="the-spicy-spoon/modules/hero_banner"
+                title="Turn Up the Heat"
+                subtitle="Discover fiery flavors and spicy recipes that will ignite your taste buds. From mild warmth to volcanic heat – find your perfect spice level."
+                search_placeholder="Search for spicy recipes, ingredients, or cuisines..."
+                show_stats=true
+                stat_1_number="500+"
+                stat_1_label="Fiery Recipes"
+                stat_2_number="15+"
+                stat_2_label="Cuisines"
+                stat_3_number="5"
+                stat_3_label="Heat Levels"
+                background_image=get_asset_url('the-spicy-spoon/assets/images/placeholders/hero.svg')
+                search_suggestions="Thai Curry,Hot Sauce,Jalapeño,Sriracha,Extra Hot 🔥"
+            %}
+        {% end_dnd_module %}
+        
+        <!-- Collections Section -->
+        {% dnd_module "collections_section" %}
+            {% module "collection_strip" 
+                path="the-spicy-spoon/modules/collection_strip"
+                section_title="🔥 Featured Collections"
+                section_subtitle="Handpicked recipe collections for every spice lover"
+                show_view_all_button=true
+                view_all_url="/collections"
+                collections=[
+                    {
+                        "title": "Spice Beginners",
+                        "description": "Perfect introduction to spicy cooking with mild heat levels and approachable flavors.",
+                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/hero.svg'),
+                        "recipe_count": "24 recipes",
+                        "heat_level": "🌶️ Mild to Medium",
+                        "url": "/collections/spice-beginners",
+                        "badge": "New",
+                        "is_featured": true
+                    },
+                    {
+                        "title": "Weekend Warriors",
+                        "description": "Complex recipes for when you have time to create something amazing.",
+                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-1.svg'),
+                        "recipe_count": "18 recipes",
+                        "heat_level": "🌶️🌶️🌶️ Medium to Hot",
+                        "url": "/collections/weekend-warriors"
+                    },
+                    {
+                        "title": "30-Minute Heat",
+                        "description": "Quick and spicy meals for busy weeknights that don't compromise on flavor.",
+                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-2.svg'),
+                        "recipe_count": "32 recipes",
+                        "heat_level": "🌶️🌶️ Mild to Medium",
+                        "url": "/collections/30-minute-heat",
+                        "badge": "Popular"
+                    },
+                    {
+                        "title": "Extreme Heat",
+                        "description": "For the brave souls who crave volcanic heat and intense flavors.",
+                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-3.svg'),
+                        "recipe_count": "12 recipes",
+                        "heat_level": "🌶️🌶️🌶️🌶️🌶️ Volcanic",
+                        "url": "/collections/extreme-heat"
+                    }
+                ]
+            %}
+        {% end_dnd_module %}
+        
+        <!-- Featured Recipes Section -->
+        {% dnd_module "featured_recipes" %}
+            {% module "recipe_grid" 
+                path="the-spicy-spoon/modules/recipe_grid"
+                section_title="⭐ This Week's Fire"
+                section_subtitle="Our most popular and highest-rated spicy recipes"
+                show_view_all_button=true
+                view_all_url="/recipes"
+                background_color="#F5F5F5"
+                recipes=[
+                    {
+                        "title": "Thai Spicy Basil Stir-Fry",
+                        "description": "A fiery Thai classic with fresh basil, chilies, and aromatic spices that delivers authentic street food flavors.",
+                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-1.svg'),
+                        "rating": 4.8,
+                        "review_count": 142,
+                        "cook_time": "20 min",
+                        "cuisine": "Thai",
+                        "heat_level": 4,
+                        "heat_text": "Very Hot",
+                        "url": "/recipes/thai-spicy-basil-stir-fry",
+                        "badge": "Popular"
+                    },
+                    {
+                        "title": "Mexican Jalapeño Salsa",
+                        "description": "Fresh and zesty salsa with the perfect kick of jalapeño heat, lime juice, and garden-fresh ingredients.",
+                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-2.svg'),
+                        "rating": 4.6,
+                        "review_count": 89,
+                        "cook_time": "10 min",
+                        "cuisine": "Mexican",
+                        "heat_level": 3,
+                        "heat_text": "Hot",
+                        "url": "/recipes/mexican-jalapeno-salsa"
+                    },
+                    {
+                        "title": "Korean Kimchi Fried Rice",
+                        "description": "Fermented kimchi adds incredible depth and heat to this satisfying fried rice with crispy edges.",
+                        "image": get_asset_url('the-spicy-spoon/assets/images/placeholders/card-3.svg'),
+                        "rating": 4.9,
+                        "review_count": 67,
+                        "cook_time": "15 min",
+                        "cuisine": "Korean",
+                        "heat_level": 3,
+                        "heat_text": "Hot",
+                        "url": "/recipes/korean-kimchi-fried-rice",
+                        "badge": "New"
+                    }
+                ]
+            %}
+        {% end_dnd_module %}
+        
+        <!-- Spice Knowledge Section -->
+        {% dnd_module "spice_tips" %}
+            {% module "tip_card" 
+                path="the-spicy-spoon/modules/tip_card"
+                section_title="🧠 Spice Wisdom"
+                section_subtitle="Pro tips and knowledge to level up your spicy cooking game"
+                tips=[
+                    {
+                        "icon": "🧤",
+                        "title": "Handling Hot Peppers",
+                        "description": "Always wear gloves when handling super-hot peppers, and never touch your eyes! The capsaicin oils can linger on your hands for hours even after washing.",
+                        "link_text": "Learn More →",
+                        "link_url": "/tips/pepper-safety"
+                    },
+                    {
+                        "icon": "🥛",
+                        "title": "Cool Down Strategy",
+                        "description": "If a dish is too spicy, dairy products like yogurt or milk are your best friends. The casein protein helps neutralize capsaicin better than water.",
+                        "link_text": "Learn More →",
+                        "link_url": "/tips/cooling-down"
+                    },
+                    {
+                        "icon": "🌡️",
+                        "title": "Scoville Scale Guide",
+                        "description": "Understanding the Scoville scale helps you choose the right heat level. Bell peppers are 0, jalapeños are 2,500-8,000, and Carolina Reapers hit 2.2 million!",
+                        "link_text": "Explore Scale →",
+                        "link_url": "/spice-guide"
+                    }
+                ]
+            %}
+        {% end_dnd_module %}
+        
+        <!-- Newsletter Signup Module -->
+        {% dnd_module "newsletter_cta" %}
+            {% module "newsletter_signup" 
+                path="the-spicy-spoon/modules/newsletter_signup"
+                title="🔥 Get the Heat Delivered"
+                subtitle="Join our spicy community! Get weekly recipes, heat level guides, and exclusive cooking tips straight to your inbox."
+                form_action="#"
+                privacy_text="We respect your privacy. Unsubscribe at any time."
+                button_text="Subscribe"
+                background_gradient=true
+            %}
+        {% end_dnd_module %}
+        
+    {% end_dnd_area %}
     
     {% include "the-spicy-spoon/partials/site-footer.html" %}
     
@@ -306,235 +207,5 @@
             });
         });
     </script>
-    
-    <style>
-    /* Hero Section Enhancements */
-    .hero-content {
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .hero-search {
-        margin: var(--space-2xl) auto;
-        max-width: 600px;
-    }
-    
-    .search-suggestions {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: var(--space-sm);
-        margin-top: var(--space-lg);
-        flex-wrap: wrap;
-    }
-    
-    .search-suggestions__label {
-        font-size: var(--font-size-sm);
-        color: var(--color-neutral-600);
-        font-weight: 500;
-    }
-    
-    .hero-stats {
-        display: flex;
-        justify-content: center;
-        gap: var(--space-2xl);
-        margin-top: var(--space-2xl);
-    }
-    
-    .stat-item {
-        text-align: center;
-    }
-    
-    .stat-item strong {
-        display: block;
-        font-size: var(--font-size-2xl);
-        font-weight: 700;
-        color: var(--color-primary);
-        font-family: var(--font-heading);
-    }
-    
-    .stat-item span {
-        font-size: var(--font-size-sm);
-        color: var(--color-neutral-600);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    /* Section Headers */
-    .section-header {
-        text-align: center;
-        margin-bottom: var(--space-2xl);
-    }
-    
-    .section-header h2 {
-        margin-bottom: var(--space-md);
-    }
-    
-    .section-header p {
-        font-size: var(--font-size-lg);
-        color: var(--color-neutral-600);
-        margin-bottom: var(--space-lg);
-    }
-    
-    /* Collections Grid */
-    .collections-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        gap: var(--space-lg);
-        margin-bottom: var(--space-xl);
-    }
-    
-    .collection-card--large {
-        grid-row: 1 / -1;
-    }
-    
-    .collection-card {
-        background: var(--color-white);
-        border-radius: var(--border-radius-lg);
-        overflow: hidden;
-        box-shadow: var(--shadow-md);
-        transition: all var(--transition-normal);
-        border: 1px solid var(--color-neutral-200);
-    }
-    
-    .collection-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-xl);
-    }
-    
-    .collection-card__image {
-        position: relative;
-        aspect-ratio: 16/10;
-        overflow: hidden;
-    }
-    
-    .collection-card--large .collection-card__image {
-        aspect-ratio: 3/2;
-    }
-    
-    .collection-card__image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform var(--transition-slow);
-    }
-    
-    .collection-card:hover .collection-card__image img {
-        transform: scale(1.05);
-    }
-    
-    .collection-card__badge {
-        position: absolute;
-        top: var(--space-sm);
-        left: var(--space-sm);
-        background: var(--color-primary);
-        color: var(--color-white);
-        padding: var(--space-xs) var(--space-sm);
-        border-radius: var(--border-radius);
-        font-size: var(--font-size-xs);
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-    
-    .collection-card__content {
-        padding: var(--space-lg);
-    }
-    
-    .collection-card__content h3 {
-        font-size: var(--font-size-xl);
-        margin-bottom: var(--space-sm);
-        color: var(--color-neutral-900);
-    }
-    
-    .collection-card--large .collection-card__content h3 {
-        font-size: var(--font-size-2xl);
-    }
-    
-    .collection-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: var(--space-md) 0;
-        font-size: var(--font-size-sm);
-        color: var(--color-neutral-600);
-    }
-    
-    .recipe-count {
-        font-weight: 600;
-    }
-    
-    /* Knowledge/Tips Grid */
-    .knowledge-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: var(--space-lg);
-    }
-    
-    .tip-card {
-        background: var(--color-white);
-        padding: var(--space-xl);
-        border-radius: var(--border-radius-lg);
-        border: 1px solid var(--color-neutral-200);
-        text-align: center;
-        transition: all var(--transition-normal);
-    }
-    
-    .tip-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-lg);
-    }
-    
-    .tip-card__icon {
-        font-size: 3rem;
-        margin-bottom: var(--space-md);
-    }
-    
-    .tip-card h3 {
-        margin-bottom: var(--space-md);
-        color: var(--color-neutral-900);
-    }
-    
-    .tip-card p {
-        color: var(--color-neutral-600);
-        margin-bottom: var(--space-lg);
-    }
-    
-    .tip-card__link {
-        color: var(--color-primary);
-        font-weight: 600;
-        text-decoration: none;
-        transition: color var(--transition-fast);
-    }
-    
-    .tip-card__link:hover {
-        color: var(--color-accent);
-    }
-    
-    /* Mobile Responsive */
-    @media (max-width: 768px) {
-        .hero-stats {
-            gap: var(--space-lg);
-        }
-        
-        .collections-grid {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto;
-        }
-        
-        .collection-card--large {
-            grid-row: auto;
-        }
-        
-        .knowledge-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .search-suggestions {
-            justify-content: flex-start;
-        }
-    }
-    </style>
 </body>
 </html>

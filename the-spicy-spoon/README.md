@@ -2,6 +2,8 @@
 
 A modern, responsive HubSpot CMS theme designed for spicy food blogs and recipe websites. Inspired by leading recipe platforms like Allrecipes, BBC Good Food, and Serious Eats.
 
+**✅ FULLY EDITABLE DRAG-AND-DROP TEMPLATES** - All templates now support module editing and customization!
+
 ## ✨ Features
 
 ### 🎨 Professional Design
@@ -35,6 +37,12 @@ A modern, responsive HubSpot CMS theme designed for spicy food blogs and recipe 
 - **Critical CSS** inlined for fast loading
 - **Skeleton Loading** states
 
+### 🎯 Drag & Drop Functionality
+- **Full Template Editing** - Add, remove, and rearrange modules
+- **Modular Sections** - Each content area is independently editable
+- **Rich Module Library** - Recipe cards, hero banners, collections, filters
+- **Content Flexibility** - Marketers can customize without code
+
 ## 🎯 Quick Start
 
 ### 1. Upload to HubSpot
@@ -46,14 +54,40 @@ hs upload the-spicy-spoon the-spicy-spoon --account your-account
 1. Go to **Marketing → Website → Website Pages**
 2. Click **Create → Website Page**
 3. Select **"The Spicy Spoon"** theme
-4. Choose **"Home - Spicy Recipes"** template
-5. Customize your content!
+4. Choose **"Home - Spicy Recipes (Drag & Drop)"** template
+5. **✨ Now you can add, remove, and edit modules!**
 
-### 3. Configure Theme Settings
+### 3. Customize Your Content
+1. **Add Modules**: Click the **"+"** button to add new sections
+2. **Edit Modules**: Click any module to customize text, images, and settings
+3. **Rearrange**: Drag modules up/down to reorder your page
+4. **Theme Settings**: Use the sidebar to adjust global colors and typography
+
+### 4. Configure Theme Settings
 1. In the page editor, click **"Theme Settings"** in the sidebar
 2. Customize your brand colors under **"Brand & Colors"**
 3. Adjust typography in **"Typography"** section
 4. Set layout preferences in **"Layout & Spacing"**
+
+## 🔧 Template Types Explained
+
+### Drag & Drop Templates (✅ Fully Editable)
+These templates use HubSpot's `{% dnd_area %}` system for complete flexibility:
+
+- **`home.html`** - "Home - Spicy Recipes (Drag & Drop)"
+- **`recipes-listing.html`** - "Recipes Listing (Drag & Drop)"
+
+**Features:**
+- ✅ Add/remove modules
+- ✅ Drag & drop reordering  
+- ✅ Individual module editing
+- ✅ Marketer-friendly
+
+### Static Templates (For Reference)
+These are included for advanced developers:
+- **`recipe-detail.html`** - Individual recipe pages
+- **`collections.html`** - Recipe collections
+- **`search.html`** - Search results
 
 ## 🎨 Customization Guide
 
@@ -80,17 +114,20 @@ Professional font combinations:
 
 ## 📄 Available Templates
 
-### 🏠 `home.html` - Homepage
-- Hero section with search bar
-- Featured collections grid
-- Popular recipes showcase
-- Spice knowledge tips
+### 🏠 `home.html` - Homepage (Drag & Drop)
+**Modules Available:**
+- **Hero Banner** - Title, subtitle, search bar, stats
+- **Collection Strip** - Featured recipe collections  
+- **Recipe Grid** - Popular recipes showcase
+- **Tip Cards** - Spice knowledge and tips
+- **Newsletter Signup** - Email capture form
 
-### 📝 `recipes.html` - Recipe Listing
-- Filter sidebar (collapsible on mobile)
-- Sort options and search results
-- Recipe grid with pagination
-- Active filter chips
+### 📝 `recipes-listing.html` - Recipe Listing (Drag & Drop)
+**Modules Available:**
+- **Page Header** - Compact hero with search
+- **Filter Bar** - Sidebar filters for categories, cuisine, heat level
+- **Recipe Grid** - Searchable, sortable recipe results
+- **Collection Strip** - Related collections
 
 ### 🍳 `recipe-detail.html` - Individual Recipe
 - Large hero image with meta info
@@ -125,6 +162,28 @@ Organize content with these suggested categories:
 - Include cooking time and difficulty in meta descriptions
 - Add proper alt text to all recipe images
 - Structure content with proper headings (H1, H2, H3)
+
+## 🎯 Module Editing Guide
+
+### How to Add Modules
+1. **Click the "+" button** in any drag-and-drop area
+2. **Browse modules** in the "Spicy Spoon – Core" category
+3. **Drag to position** where you want the new module
+4. **Configure settings** in the module editor
+
+### Available Modules
+- **🎯 Hero Banner** - Page headers with search functionality
+- **🍽️ Recipe Grid** - Displays recipe cards in grid layout
+- **📚 Collection Strip** - Showcases recipe collections
+- **💡 Tip Card** - Spice knowledge and cooking tips
+- **📧 Newsletter Signup** - Email capture with styling options
+- **🔍 Filter Bar** - Advanced filtering for recipe listings
+
+### Module Customization Tips
+- **Images**: Replace placeholder SVGs with your food photography
+- **Text**: Edit titles, descriptions, and button text directly
+- **Colors**: Most modules respect global theme settings
+- **Layout**: Adjust grid columns, spacing, and alignment options
 
 ## 🖼️ Image Guidelines
 
@@ -231,9 +290,13 @@ the-spicy-spoon/
 │   ├── site-header.html      # Navigation
 │   └── site-footer.html      # Footer with newsletter
 ├── templates/
-│   ├── home.html            # Homepage
-│   ├── recipes.html         # Recipe listing
+│   ├── home.html            # Homepage (Drag & Drop)
+│   ├── recipes-listing.html # Recipe listing (Drag & Drop)
 │   └── recipe-detail.html   # Individual recipe
+├── modules/                 # 9 custom modules
+│   ├── hero_banner/
+│   ├── recipe_grid/
+│   └── ...
 ├── theme.json               # Theme configuration
 ├── fields.json              # Theme settings
 └── README.md               # This file
@@ -244,6 +307,23 @@ the-spicy-spoon/
 2. Install HubSpot CLI: `npm install -g @hubspot/cli`
 3. Authenticate: `hs auth --personal-access-key`
 4. Upload changes: `hs upload the-spicy-spoon`
+
+## 🚨 Troubleshooting
+
+### "Template doesn't allow modules to be added"
+✅ **FIXED!** Use the drag-and-drop versions:
+- "Home - Spicy Recipes (Drag & Drop)"
+- "Recipes Listing (Drag & Drop)"
+
+### Module not appearing
+1. Check the module exists in `modules/` folder
+2. Verify `meta.json` has correct category: `"Spicy Spoon – Core"`
+3. Upload the module folder: `hs upload the-spicy-spoon/modules`
+
+### Theme settings not working
+1. Ensure `fields.json` has valid syntax
+2. Check all field `type` properties are defined
+3. Upload theme: `hs upload the-spicy-spoon/fields.json`
 
 ## 🎯 Next Steps
 
@@ -265,9 +345,19 @@ the-spicy-spoon/
 
 ## 🌶️ Support & Updates
 
-**Theme Version**: 1.0.0  
+**Theme Version**: 2.0.0 (Drag & Drop)  
 **HubSpot Compatibility**: CMS Hub Starter, Professional, Enterprise  
 **Last Updated**: {{ local_dt|datetimeformat('%B %Y') }}
+
+### Template Support Status
+✅ **Fully Editable (Drag & Drop)**
+- Home page
+- Recipes listing
+
+🔧 **Developer Templates**
+- Recipe detail
+- Collections  
+- Search results
 
 For support and customization requests, refer to the HubSpot CMS documentation or contact your development team.
 
