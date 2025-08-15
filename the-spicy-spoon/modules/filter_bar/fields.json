@@ -1,0 +1,32 @@
+[
+  {
+    "name": "show_cuisine_filter",
+    "label": "Show Cuisine Filter",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "name": "show_heat_filter", 
+    "label": "Show Heat Level Filter",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "name": "show_method_filter",
+    "label": "Show Cooking Method Filter", 
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "name": "show_time_filter",
+    "label": "Show Time Filter",
+    "type": "boolean", 
+    "default": true
+  },
+  {
+    "name": "show_diet_filter",
+    "label": "Show Diet Filter",
+    "type": "boolean",
+    "default": true
+  }
+]

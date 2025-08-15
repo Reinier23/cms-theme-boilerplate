@@ -5,13 +5,14 @@
     "email": "team@spicyspoon.example"
   },
   "documentation_url": "https://example.com/docs/the-spicy-spoon",
-  "screenshot_path": "assets/images/placeholder-1-1600x900.jpg",
+  "screenshot_path": "assets/images/placeholder-1-1600x900.svg",
   "css": [
     "assets/css/base.css",
     "assets/css/theme.css"
   ],
   "js": [
-    "assets/js/theme.js"
+    "assets/js/theme.js",
+    "assets/js/filtering.js"
   ],
   "use_theme_settings": true,
   "enable_domain_stylesheets": false,

@@ -1,0 +1,14 @@
+<section class="hero">
+  {% if module.hero_image.src %}
+  <div style="position: absolute; inset: 0; background: url('{{ module.hero_image.src }}') center/cover no-repeat; opacity: 0.2; z-index: -1;"></div>
+  {% endif %}
+  <div class="hero__inner container">
+    <h1 class="hero__title">{{ module.hero_title }}</h1>
+    <p class="hero__sub">{{ module.hero_subtitle }}</p>
+    {% if module.hero_cta_text and module.hero_cta_url %}
+    <div class="hero__cta">
+      <a href="{{ module.hero_cta_url }}" class="btn">{{ module.hero_cta_text }}</a>
+    </div>
+    {% endif %}
+  </div>
+</section>

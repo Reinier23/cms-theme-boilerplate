@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "the-spicy-spoon/partials/head-meta.html" %}
+</head>
+<body>
+  {% include "the-spicy-spoon/partials/header.html" %}
+  {% include "the-spicy-spoon/partials/breadcrumbs.html" %}
+  
+  <main role="main">
+    <div class="container">
+      <h1>Spicy Collections</h1>
+      <p class="muted">Curated groups of fiery recipes for every craving</p>
+    </div>
+    
+    <section class="section">
+      <div class="container">
+        {% module "collection_strip" 
+           path="the-spicy-spoon/modules/collection_strip",
+           label="Weeknight Heat Collection",
+           collection_title="Weeknight Heat",
+           collection_description="Quick spicy meals for busy evenings"
+        %}
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="container">
+        {% module "collection_strip" 
+           path="the-spicy-spoon/modules/collection_strip",
+           label="Global Chilies Collection",
+           collection_title="Global Chilies",
+           collection_description="Spicy dishes from around the world"
+        %}
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="container">
+        {% module "collection_strip" 
+           path="the-spicy-spoon/modules/collection_strip",
+           label="Fire Starters Collection",
+           collection_title="Fire Starters",
+           collection_description="Perfect for spice beginners"
+        %}
+      </div>
+    </section>
+    
+    <section class="section">
+      <div class="container">
+        {% module "collection_strip" 
+           path="the-spicy-spoon/modules/collection_strip",
+           label="Inferno Zone Collection",
+           collection_title="Inferno Zone",
+           collection_description="Extreme heat for the brave"
+        %}
+      </div>
+    </section>
+  </main>
+  
+  {% include "the-spicy-spoon/partials/footer.html" %}
+</body>
+</html>

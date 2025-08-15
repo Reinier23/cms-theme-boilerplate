@@ -1,0 +1,23 @@
+[
+  {
+    "name": "heat_level",
+    "label": "Heat Level (1-5)",
+    "type": "number",
+    "min": 1,
+    "max": 5,
+    "default": 3,
+    "help_text": "1 = Mild, 2 = Medium, 3 = Hot, 4 = Very Hot, 5 = Extreme"
+  },
+  {
+    "name": "show_label",
+    "label": "Show Text Label",
+    "type": "boolean",
+    "default": true
+  },
+  {
+    "name": "custom_label",
+    "label": "Custom Label (optional)",
+    "type": "text",
+    "help_text": "Override default heat level text"
+  }
+]

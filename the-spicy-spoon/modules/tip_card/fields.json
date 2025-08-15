@@ -1,0 +1,14 @@
+[
+  {
+    "name": "tip_title",
+    "label": "Tip Title",
+    "type": "text",
+    "default": "Spice Tip"
+  },
+  {
+    "name": "tip_content",
+    "label": "Tip Content",
+    "type": "rich_text",
+    "default": "<p>Here's a helpful tip for working with spicy ingredients safely and effectively.</p>"
+  }
+]
