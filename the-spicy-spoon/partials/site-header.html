@@ -1,90 +1,355 @@
 <header class="site-header" role="banner">
-  <div class="container">
-    <div class="site-header__container">
-      <!-- Logo -->
-      <a href="/" class="site-header__logo" aria-label="The Spicy Spoon - Home">
-        🌶️ The Spicy Spoon
-      </a>
-      
-      <!-- Mobile Menu Toggle -->
-      <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" data-mobile-toggle>
-        <span class="sr-only">Menu</span>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
-      
-      <!-- Main Navigation -->
-      <nav class="site-header__nav" role="navigation" aria-label="Main navigation" data-mobile-menu>
-        <ul>
-          <li><a href="/" {% if request.path == "/" %}aria-current="page"{% endif %}>Home</a></li>
-          <li><a href="/recipes" {% if "/recipes" in request.path %}aria-current="page"{% endif %}>Recipes</a></li>
-          <li><a href="/collections" {% if "/collections" in request.path %}aria-current="page"{% endif %}>Collections</a></li>
-          <li><a href="/about" {% if "/about" in request.path %}aria-current="page"{% endif %}>About</a></li>
-          <li><a href="/contact" {% if "/contact" in request.path %}aria-current="page"{% endif %}>Contact</a></li>
-        </ul>
+  <!-- Main Header Bar -->
+  <div class="header-main">
+    <div class="container">
+      <div class="header-content">
+        <!-- Logo Section -->
+        <div class="header-brand">
+          <a href="/" class="logo" aria-label="The Spicy Spoon - Home">
+            <div class="logo-icon">🌶️</div>
+            <div class="logo-text">
+              <span class="logo-name">The Spicy Spoon</span>
+              <span class="logo-tagline">Fiery Recipes & Heat</span>
+            </div>
+          </a>
+        </div>
         
-        <!-- Search in Navigation (Mobile) -->
-        <div class="header-search header-search--mobile">
-          <form action="/recipes" method="get" role="search" aria-label="Search recipes">
-            <div class="search-bar">
+        <!-- Desktop Search Bar -->
+        <div class="header-search">
+          <form action="/recipes" method="get" role="search" aria-label="Search recipes" class="search-form">
+            <div class="search-input-wrapper">
+              <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
+              </svg>
               <input 
                 type="search" 
                 name="q" 
-                class="search-bar__input" 
-                placeholder="Search spicy recipes..." 
+                class="search-input" 
+                placeholder="Search recipes, ingredients, or cuisines..." 
                 aria-label="Search recipes"
                 {% if request.query_dict.q %}value="{{ request.query_dict.q }}"{% endif %}
               >
-              <button type="submit" class="search-bar__button" aria-label="Search">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="M21 21l-4.35-4.35"></path>
-                </svg>
+              <button type="submit" class="search-submit" aria-label="Search">
+                <span>Search</span>
               </button>
             </div>
           </form>
         </div>
-      </nav>
-      
-      <!-- Desktop Search -->
-      <div class="header-search header-search--desktop">
-        <form action="/recipes" method="get" role="search" aria-label="Search recipes">
-          <div class="search-bar search-bar--compact">
-            <input 
-              type="search" 
-              name="q" 
-              class="search-bar__input" 
-              placeholder="Search recipes..." 
-              aria-label="Search recipes"
-              {% if request.query_dict.q %}value="{{ request.query_dict.q }}"{% endif %}
-            >
-            <button type="submit" class="search-bar__button" aria-label="Search">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <circle cx="11" cy="11" r="8"></circle>
-                <path d="M21 21l-4.35-4.35"></path>
+        
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" data-mobile-toggle>
+            <span class="hamburger">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </span>
+            <span class="sr-only">Menu</span>
+          </button>
+          
+          <!-- Desktop CTA -->
+          <div class="header-cta">
+            <a href="/submit-recipe" class="btn-cta">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 2v20M2 12h20"></path>
               </svg>
-            </button>
+              Share Recipe
+            </a>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
   
-  <!-- Category Quick Links -->
+  <!-- Navigation Bar -->
+  <nav class="header-nav" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <!-- Desktop Navigation -->
+      <div class="nav-desktop">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="/" class="nav-link" {% if request.path == "/" %}aria-current="page"{% endif %}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                <polyline points="9,22 9,12 15,12 15,22"></polyline>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li class="nav-item dropdown" data-dropdown>
+            <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              Recipes
+              <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6,9 12,15 18,9"></polyline>
+              </svg>
+            </button>
+            <div class="nav-dropdown">
+              <div class="dropdown-content">
+                <div class="dropdown-section">
+                  <h4 class="dropdown-title">Browse by Heat</h4>
+                  <a href="/recipes?heat=1" class="dropdown-link">
+                    <span class="heat-indicator">🌶️</span>
+                    Mild & Gentle
+                  </a>
+                  <a href="/recipes?heat=3" class="dropdown-link">
+                    <span class="heat-indicator">🌶️🌶️</span>
+                    Medium Heat
+                  </a>
+                  <a href="/recipes?heat=4" class="dropdown-link">
+                    <span class="heat-indicator">🌶️🌶️🌶️</span>
+                    Hot & Spicy
+                  </a>
+                  <a href="/recipes?heat=5" class="dropdown-link featured">
+                    <span class="heat-indicator">🌶️🌶️🌶️🌶️🌶️</span>
+                    Volcanic Heat
+                    <span class="badge">Popular</span>
+                  </a>
+                </div>
+                <div class="dropdown-section">
+                  <h4 class="dropdown-title">Quick Access</h4>
+                  <a href="/recipes" class="dropdown-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="9" y1="9" x2="15" y2="15"></line>
+                      <line x1="15" y1="9" x2="9" y2="15"></line>
+                    </svg>
+                    All Recipes
+                  </a>
+                  <a href="/recipes?time=quick" class="dropdown-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12,6 12,12 16,14"></polyline>
+                    </svg>
+                    Quick Meals (30 min)
+                  </a>
+                  <a href="/recipes?new=true" class="dropdown-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    </svg>
+                    New Recipes
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item dropdown" data-dropdown>
+            <button class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path>
+              </svg>
+              Cuisines
+              <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6,9 12,15 18,9"></polyline>
+              </svg>
+            </button>
+            <div class="nav-dropdown wide">
+              <div class="dropdown-content">
+                <div class="cuisine-grid">
+                  <a href="/recipes?cuisine=thai" class="cuisine-card">
+                    <span class="cuisine-flag">🇹🇭</span>
+                    <span class="cuisine-name">Thai</span>
+                    <span class="cuisine-count">24 recipes</span>
+                  </a>
+                  <a href="/recipes?cuisine=mexican" class="cuisine-card">
+                    <span class="cuisine-flag">🇲🇽</span>
+                    <span class="cuisine-name">Mexican</span>
+                    <span class="cuisine-count">18 recipes</span>
+                  </a>
+                  <a href="/recipes?cuisine=indian" class="cuisine-card">
+                    <span class="cuisine-flag">🇮🇳</span>
+                    <span class="cuisine-name">Indian</span>
+                    <span class="cuisine-count">32 recipes</span>
+                  </a>
+                  <a href="/recipes?cuisine=korean" class="cuisine-card">
+                    <span class="cuisine-flag">🇰🇷</span>
+                    <span class="cuisine-name">Korean</span>
+                    <span class="cuisine-count">15 recipes</span>
+                  </a>
+                  <a href="/recipes?cuisine=chinese" class="cuisine-card">
+                    <span class="cuisine-flag">🇨🇳</span>
+                    <span class="cuisine-name">Chinese</span>
+                    <span class="cuisine-count">21 recipes</span>
+                  </a>
+                  <a href="/recipes?cuisine=cajun" class="cuisine-card">
+                    <span class="cuisine-flag">🎺</span>
+                    <span class="cuisine-name">Cajun</span>
+                    <span class="cuisine-count">12 recipes</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="/collections" class="nav-link" {% if "/collections" in request.path %}aria-current="page"{% endif %}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                <polyline points="14,2 14,8 20,8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10,9 9,9 8,9"></polyline>
+              </svg>
+              Collections
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/spice-guide" class="nav-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              Spice Guide
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/about" class="nav-link" {% if "/about" in request.path %}aria-current="page"{% endif %}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              About
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      <div class="nav-mobile" data-mobile-menu>
+        <!-- Mobile Search -->
+        <div class="mobile-search">
+          <form action="/recipes" method="get" role="search" aria-label="Search recipes" class="search-form">
+            <div class="search-input-wrapper">
+              <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
+              </svg>
+              <input 
+                type="search" 
+                name="q" 
+                class="search-input" 
+                placeholder="Search spicy recipes..." 
+                aria-label="Search recipes"
+              >
+              <button type="submit" class="search-submit" aria-label="Search">Go</button>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Mobile Menu Items -->
+        <ul class="mobile-menu">
+          <li class="mobile-item">
+            <a href="/" class="mobile-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+                <polyline points="9,22 9,12 15,12 15,22"></polyline>
+              </svg>
+              Home
+            </a>
+          </li>
+          <li class="mobile-item mobile-dropdown" data-mobile-dropdown>
+            <button class="mobile-link mobile-toggle" aria-expanded="false">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+              Recipes
+              <svg class="mobile-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6,9 12,15 18,9"></polyline>
+              </svg>
+            </button>
+            <div class="mobile-submenu">
+              <a href="/recipes" class="mobile-sublink">All Recipes</a>
+              <a href="/recipes?heat=1" class="mobile-sublink">🌶️ Mild</a>
+              <a href="/recipes?heat=3" class="mobile-sublink">🌶️🌶️ Medium</a>
+              <a href="/recipes?heat=4" class="mobile-sublink">🌶️🌶️🌶️ Hot</a>
+              <a href="/recipes?heat=5" class="mobile-sublink">🌶️🌶️🌶️🌶️🌶️ Volcanic</a>
+              <a href="/recipes?time=quick" class="mobile-sublink">⚡ Quick Meals</a>
+            </div>
+          </li>
+          <li class="mobile-item mobile-dropdown" data-mobile-dropdown>
+            <button class="mobile-link mobile-toggle" aria-expanded="false">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"></path>
+              </svg>
+              Cuisines
+              <svg class="mobile-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6,9 12,15 18,9"></polyline>
+              </svg>
+            </button>
+            <div class="mobile-submenu">
+              <a href="/recipes?cuisine=thai" class="mobile-sublink">🇹🇭 Thai</a>
+              <a href="/recipes?cuisine=mexican" class="mobile-sublink">🇲🇽 Mexican</a>
+              <a href="/recipes?cuisine=indian" class="mobile-sublink">🇮🇳 Indian</a>
+              <a href="/recipes?cuisine=korean" class="mobile-sublink">🇰🇷 Korean</a>
+              <a href="/recipes?cuisine=chinese" class="mobile-sublink">🇨🇳 Chinese</a>
+              <a href="/recipes?cuisine=cajun" class="mobile-sublink">🎺 Cajun</a>
+            </div>
+          </li>
+          <li class="mobile-item">
+            <a href="/collections" class="mobile-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path>
+                <polyline points="14,2 14,8 20,8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10,9 9,9 8,9"></polyline>
+              </svg>
+              Collections
+            </a>
+          </li>
+          <li class="mobile-item">
+            <a href="/spice-guide" class="mobile-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              Spice Guide
+            </a>
+          </li>
+          <li class="mobile-item">
+            <a href="/about" class="mobile-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              About
+            </a>
+          </li>
+        </ul>
+        
+        <!-- Mobile CTA -->
+        <div class="mobile-cta">
+          <a href="/submit-recipe" class="btn-cta btn-cta--mobile">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 2v20M2 12h20"></path>
+            </svg>
+            Share Your Recipe
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Quick Category Chips (Optional - only on homepage/recipes) -->
   {% if request.path == "/" or "/recipes" in request.path %}
   <div class="category-bar">
     <div class="container">
-      <div class="category-chips" role="navigation" aria-label="Recipe categories">
-        <a href="/recipes?category=thai" class="chip">🇹🇭 Thai</a>
-        <a href="/recipes?category=mexican" class="chip">🇲🇽 Mexican</a>
-        <a href="/recipes?category=indian" class="chip">🇮🇳 Indian</a>
-        <a href="/recipes?category=korean" class="chip">🇰🇷 Korean</a>
-        <a href="/recipes?category=cajun" class="chip">🎺 Cajun</a>
-        <a href="/recipes?category=chinese" class="chip">🇨🇳 Chinese</a>
-        <a href="/recipes?heat=5" class="chip chip--hot">🔥 Extra Hot</a>
+      <div class="category-chips" role="navigation" aria-label="Popular categories">
+        <span class="category-label">Popular:</span>
+        <a href="/recipes?cuisine=thai" class="category-chip">🇹🇭 Thai</a>
+        <a href="/recipes?cuisine=mexican" class="category-chip">🇲🇽 Mexican</a>
+        <a href="/recipes?cuisine=indian" class="category-chip">🇮🇳 Indian</a>
+        <a href="/recipes?time=quick" class="category-chip">⚡ Quick</a>
+        <a href="/recipes?heat=5" class="category-chip category-chip--hot">🔥 Extreme</a>
       </div>
     </div>
   </div>
@@ -92,46 +357,529 @@
 </header>
 
 <style>
-/* Mobile Menu Styles */
+/* ===== HEADER REDESIGN - USER FRIENDLY ===== */
+
+/* Header Structure */
+.site-header {
+  background: var(--color-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Main Header Bar */
+.header-main {
+  border-bottom: 1px solid var(--color-neutral-100);
+  padding: var(--space-md) 0;
+}
+
+.header-content {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+/* Logo Section */
+.header-brand {
+  min-width: 200px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  transition: transform var(--transition-fast);
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logo-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.logo-tagline {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-600);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+/* Header Search */
+.header-search {
+  max-width: 500px;
+  width: 100%;
+  justify-self: center;
+}
+
+.search-form {
+  position: relative;
+}
+
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--color-neutral-100);
+  border-radius: var(--border-radius-xl);
+  transition: all var(--transition-fast);
+  border: 2px solid transparent;
+}
+
+.search-input-wrapper:focus-within {
+  background: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--space-md);
+  color: var(--color-neutral-600);
+  z-index: 1;
+}
+
+.search-input {
+  flex: 1;
+  padding: var(--space-md) var(--space-md) var(--space-md) calc(var(--space-md) + 24px + var(--space-sm));
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-md);
+  outline: none;
+  border-radius: var(--border-radius-xl);
+}
+
+.search-input::placeholder {
+  color: var(--color-neutral-600);
+}
+
+.search-submit {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--border-radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  margin: var(--space-xs);
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-sm);
+}
+
+.search-submit:hover {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  min-width: 200px;
+  justify-content: flex-end;
+}
+
+.btn-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--border-radius-lg);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-cta:hover {
+  background: var(--color-accent);
+  color: var(--color-white);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Mobile Menu Toggle */
 .mobile-menu-toggle {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: var(--space-sm);
-  color: var(--color-neutral-900);
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-fast);
 }
 
-.header-search--desktop {
-  max-width: 300px;
+.mobile-menu-toggle:hover {
+  background: var(--color-neutral-100);
 }
 
-.header-search--mobile {
-  display: none;
-  margin-top: var(--space-md);
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 24px;
 }
 
-.search-bar--compact {
-  max-width: 300px;
+.hamburger-line {
+  height: 3px;
+  background: var(--color-neutral-900);
+  border-radius: 2px;
+  transition: all var(--transition-fast);
 }
 
-.search-bar--compact .search-bar__input {
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Navigation Bar */
+.header-nav {
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+
+/* Desktop Navigation */
+.nav-desktop {
+  padding: var(--space-sm) 0;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
   padding: var(--space-sm) var(--space-md);
+  color: var(--color-neutral-900);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-fast);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-link[aria-current="page"] {
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.nav-dropdown-toggle {
+  position: relative;
+}
+
+.dropdown-arrow {
+  transition: transform var(--transition-fast);
+}
+
+.nav-dropdown-toggle[aria-expanded="true"] .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menus */
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-neutral-200);
+  min-width: 280px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-fast);
+  z-index: 1000;
+  margin-top: var(--space-sm);
+}
+
+.nav-dropdown.wide {
+  min-width: 400px;
+}
+
+.dropdown.is-open .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-content {
+  padding: var(--space-lg);
+}
+
+.dropdown-section {
+  margin-bottom: var(--space-lg);
+}
+
+.dropdown-section:last-child {
+  margin-bottom: 0;
+}
+
+.dropdown-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  margin-bottom: var(--space-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-neutral-900);
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-fast);
+  margin-bottom: var(--space-xs);
+  position: relative;
+}
+
+.dropdown-link:hover {
+  background: var(--color-neutral-100);
+  text-decoration: none;
+  transform: translateX(4px);
+}
+
+.dropdown-link.featured {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: var(--color-white);
+}
+
+.dropdown-link.featured:hover {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+  transform: translateX(4px) translateY(-1px);
+}
+
+.heat-indicator {
   font-size: var(--font-size-sm);
 }
 
-.search-bar--compact .search-bar__button {
+.badge {
+  position: absolute;
+  right: var(--space-sm);
+  background: var(--color-accent);
+  color: var(--color-white);
   padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
 }
 
-.category-bar {
+/* Cuisine Grid */
+.cuisine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+}
+
+.cuisine-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-md);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: 1px solid var(--color-neutral-200);
+}
+
+.cuisine-card:hover {
+  background: var(--color-neutral-100);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.cuisine-flag {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-xs);
+}
+
+.cuisine-name {
+  font-weight: 600;
+  color: var(--color-neutral-900);
+  margin-bottom: var(--space-xs);
+}
+
+.cuisine-count {
+  font-size: var(--font-size-xs);
+  color: var(--color-neutral-600);
+}
+
+/* Mobile Navigation */
+.nav-mobile {
+  display: none;
   background: var(--color-white);
   border-top: 1px solid var(--color-neutral-200);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.nav-mobile.is-open {
+  display: block;
+}
+
+.mobile-search {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+
+.mobile-search .search-input-wrapper {
+  background: var(--color-neutral-100);
+}
+
+.mobile-search .search-submit {
+  font-size: var(--font-size-xs);
+  padding: var(--space-sm);
+}
+
+.mobile-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-item {
+  border-bottom: 1px solid var(--color-neutral-100);
+}
+
+.mobile-link,
+.mobile-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  color: var(--color-neutral-900);
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.mobile-link:hover,
+.mobile-toggle:hover {
+  background: var(--color-neutral-100);
+  text-decoration: none;
+}
+
+.mobile-arrow {
+  margin-left: auto;
+  transition: transform var(--transition-fast);
+}
+
+.mobile-toggle[aria-expanded="true"] .mobile-arrow {
+  transform: rotate(180deg);
+}
+
+.mobile-submenu {
+  background: var(--color-neutral-100);
+  display: none;
+}
+
+.mobile-dropdown.is-open .mobile-submenu {
+  display: block;
+}
+
+.mobile-sublink {
+  display: block;
+  padding: var(--space-md) var(--space-lg) var(--space-md) calc(var(--space-lg) + var(--space-lg) + var(--space-md));
+  color: var(--color-neutral-600);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.mobile-sublink:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--color-neutral-900);
+  text-decoration: none;
+  padding-left: calc(var(--space-lg) + var(--space-lg) + var(--space-lg));
+}
+
+.mobile-cta {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--color-neutral-200);
+  background: var(--color-neutral-100);
+}
+
+.btn-cta--mobile {
+  width: 100%;
+  justify-content: center;
+}
+
+/* Category Bar */
+.category-bar {
+  background: var(--color-neutral-100);
+  border-bottom: 1px solid var(--color-neutral-200);
   padding: var(--space-sm) 0;
 }
 
 .category-chips {
   display: flex;
+  align-items: center;
   gap: var(--space-sm);
   overflow-x: auto;
   padding: var(--space-xs) 0;
@@ -139,30 +887,68 @@
   -webkit-overflow-scrolling: touch;
 }
 
-.category-chips::-webkit-scrollbar {
-  height: 4px;
+.category-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-neutral-600);
+  white-space: nowrap;
+  margin-right: var(--space-sm);
 }
 
-.category-chips::-webkit-scrollbar-track {
-  background: var(--color-neutral-100);
-  border-radius: var(--border-radius);
+.category-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-white);
+  color: var(--color-neutral-900);
+  border-radius: var(--border-radius-xl);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  border: 1px solid var(--color-neutral-200);
 }
 
-.category-chips::-webkit-scrollbar-thumb {
-  background: var(--color-neutral-400);
-  border-radius: var(--border-radius);
-}
-
-.chip--hot {
+.category-chip:hover {
   background: var(--color-primary);
   color: var(--color-white);
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
-.chip--hot:hover {
-  background: var(--color-accent);
+.category-chip--hot {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.category-chip--hot:hover {
+  background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
 }
 
 /* Mobile Responsive */
+@media (max-width: 1024px) {
+  .header-content {
+    grid-template-columns: auto 1fr auto;
+  }
+  
+  .header-search {
+    max-width: 300px;
+  }
+  
+  .nav-menu {
+    gap: var(--space-sm);
+  }
+  
+  .nav-link {
+    padding: var(--space-sm);
+    font-size: var(--font-size-xs);
+  }
+}
+
 @media (max-width: 768px) {
   .mobile-menu-toggle {
     display: flex;
@@ -170,34 +956,29 @@
     justify-content: center;
   }
   
-  .site-header__nav {
+  .header-search {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--color-white);
-    border-top: 1px solid var(--color-neutral-200);
-    padding: var(--space-lg);
-    z-index: 1000;
   }
   
-  .site-header__nav.is-open {
-    display: block;
+  .nav-desktop {
+    display: none;
   }
   
-  .site-header__nav ul {
-    flex-direction: column;
+  .header-content {
+    grid-template-columns: 1fr auto;
     gap: var(--space-md);
-    margin-bottom: var(--space-lg);
   }
   
-  .header-search--desktop {
+  .header-brand {
+    min-width: auto;
+  }
+  
+  .logo-tagline {
     display: none;
   }
   
-  .header-search--mobile {
-    display: block;
+  .btn-cta {
+    display: none;
   }
   
   .category-chips {
@@ -205,58 +986,132 @@
   }
 }
 
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  .category-chips {
-    scroll-behavior: auto;
-  }
-}
-
-/* Focus states */
-.mobile-menu-toggle:focus,
-.site-header__nav a:focus,
-.search-bar__input:focus,
-.search-bar__button:focus {
+/* Focus States */
+.nav-link:focus,
+.mobile-link:focus,
+.mobile-toggle:focus,
+.search-input:focus,
+.search-submit:focus,
+.btn-cta:focus,
+.mobile-menu-toggle:focus {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }
 
-/* Active/current page styling */
-.site-header__nav a[aria-current="page"] {
-  color: var(--color-primary);
-  font-weight: 600;
+/* Dropdown Focus Management */
+.dropdown[data-dropdown]:focus-within .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 </style>
 
 <script>
-// Mobile menu toggle
+// Enhanced Header JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-  const toggle = document.querySelector('[data-mobile-toggle]');
-  const menu = document.querySelector('[data-mobile-menu]');
+  // Mobile menu toggle
+  const mobileToggle = document.querySelector('[data-mobile-toggle]');
+  const mobileMenu = document.querySelector('[data-mobile-menu]');
   
-  if (toggle && menu) {
-    toggle.addEventListener('click', function() {
-      const isOpen = menu.classList.contains('is-open');
-      menu.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', !isOpen);
-    });
-    
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-        menu.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-    
-    // Close mobile menu on escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
-        menu.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.focus();
-      }
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', function() {
+      const isOpen = mobileMenu.classList.contains('is-open');
+      mobileMenu.classList.toggle('is-open');
+      mobileToggle.setAttribute('aria-expanded', !isOpen);
+      
+      // Prevent body scroll when mobile menu is open
+      document.body.style.overflow = !isOpen ? 'hidden' : '';
     });
   }
+  
+  // Desktop dropdown menus
+  const dropdowns = document.querySelectorAll('[data-dropdown]');
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+    const menu = dropdown.querySelector('.nav-dropdown');
+    
+    if (toggle && menu) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isOpen = dropdown.classList.contains('is-open');
+        
+        // Close all other dropdowns
+        dropdowns.forEach(d => {
+          if (d !== dropdown) {
+            d.classList.remove('is-open');
+            d.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        // Toggle current dropdown
+        dropdown.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', !isOpen);
+      });
+    }
+  });
+  
+  // Mobile dropdown menus
+  const mobileDropdowns = document.querySelectorAll('[data-mobile-dropdown]');
+  mobileDropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.mobile-toggle');
+    const submenu = dropdown.querySelector('.mobile-submenu');
+    
+    if (toggle && submenu) {
+      toggle.addEventListener('click', function() {
+        const isOpen = dropdown.classList.contains('is-open');
+        dropdown.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', !isOpen);
+      });
+    }
+  });
+  
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('[data-dropdown]')) {
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('is-open');
+        dropdown.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+      });
+    }
+    
+    if (!e.target.closest('[data-mobile-toggle]') && !e.target.closest('[data-mobile-menu]')) {
+      if (mobileMenu) {
+        mobileMenu.classList.remove('is-open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    }
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      // Close all dropdowns
+      dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('is-open');
+        dropdown.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded', 'false');
+      });
+      
+      // Close mobile menu
+      if (mobileMenu && mobileMenu.classList.contains('is-open')) {
+        mobileMenu.classList.remove('is-open');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        mobileToggle.focus();
+        document.body.style.overflow = '';
+      }
+    }
+  });
+  
+  // Search enhancement
+  const searchInputs = document.querySelectorAll('.search-input');
+  searchInputs.forEach(input => {
+    input.addEventListener('focus', function() {
+      this.closest('.search-input-wrapper').classList.add('is-focused');
+    });
+    
+    input.addEventListener('blur', function() {
+      this.closest('.search-input-wrapper').classList.remove('is-focused');
+    });
+  });
 });
 </script>
