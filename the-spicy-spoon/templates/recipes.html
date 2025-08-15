@@ -1,0 +1,87 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Recipes Listing
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title or "Spicy Recipes - The Spicy Spoon" }}</title>
+    {{ standard_header_includes }}
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 0; padding: 0; color: #111; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: #B71C1C; color: white; padding: 20px 0; }
+        nav a { color: white; margin-right: 30px; text-decoration: none; font-weight: 500; }
+        .page-header { padding: 40px 0; background: #fafafa; text-align: center; }
+        .recipe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .recipe-card { border: 1px solid #eee; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .recipe-card-body { padding: 20px; }
+        .heat-level { color: #FF6D00; font-weight: 600; }
+        footer { background: #111; color: white; padding: 40px 0; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/">🌶️ The Spicy Spoon</a>
+                <a href="/recipes">Recipes</a>
+                <a href="/collections">Collections</a>
+                <a href="/about">About</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>{{ content.name or "Spicy Recipes" }}</h1>
+            <p>Find your perfect level of heat</p>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container">
+            <div>{{ content.post_body }}</div>
+            
+            <div class="recipe-grid">
+                <div class="recipe-card">
+                    <div style="background: #ffede7; height: 200px; display: flex; align-items: center; justify-content: center; color: #B71C1C; font-weight: bold;">🌶️ Recipe Image</div>
+                    <div class="recipe-card-body">
+                        <h3>Spicy Thai Curry</h3>
+                        <p>Rich and creamy curry with layers of heat and flavor.</p>
+                        <div class="heat-level">Heat Level: 🌶️🌶️🌶️🌶️</div>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div style="background: #ffede7; height: 200px; display: flex; align-items: center; justify-content: center; color: #B71C1C; font-weight: bold;">🌶️ Recipe Image</div>
+                    <div class="recipe-card-body">
+                        <h3>Habanero Hot Sauce</h3>
+                        <p>Homemade hot sauce with tropical habanero heat.</p>
+                        <div class="heat-level">Heat Level: 🌶️🌶️🌶️🌶️🌶️</div>
+                    </div>
+                </div>
+                
+                <div class="recipe-card">
+                    <div style="background: #ffede7; height: 200px; display: flex; align-items: center; justify-content: center; color: #B71C1C; font-weight: bold;">🌶️ Recipe Image</div>
+                    <div class="recipe-card-body">
+                        <h3>Chili Garlic Noodles</h3>
+                        <p>Simple noodles elevated with chili garlic goodness.</p>
+                        <div class="heat-level">Heat Level: 🌶️🌶️🌶️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; {{ local_dt|datetimeformat('%Y') }} The Spicy Spoon. Turn up the heat, deliciously.</p>
+        </div>
+    </footer>
+    
+    {{ standard_footer_includes }}
+</body>
+</html>
